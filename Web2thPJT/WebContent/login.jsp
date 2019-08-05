@@ -54,7 +54,7 @@
 	<div class="container">
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
-         <div class="jumbotron" style="padding-top: 20px;">
+         <div class="jumbotron" style="margin: 100px 25px 15px 0px">
             <form method="post" action="joinAction.jsp">
                <h3 style="text-align: center;">Sign in</h3>
                <div class="form-group">

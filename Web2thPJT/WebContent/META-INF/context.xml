@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Context reloadable="true">
-	<WatchedResource>WEB-INF/web.xml	</WatchedResource>
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
 	
 	<Resource name="jdbc:BoardDB"
             auth="Container"
             type="javax.sql.DataSource"
-            username="lindswell"
-            password="bit129"
+            username="magic"
+            password="oracle"
             driverClassName="oracle.jdbc.driver.OracleDriver"
-            url="jdbc:oracle:thin:@localhost:1521:lindswell"
+            url="jdbc:oracle:thin:@localhost:1521:XE"
 		/>
 
 </Context>

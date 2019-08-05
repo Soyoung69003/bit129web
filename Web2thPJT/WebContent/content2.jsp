@@ -11,7 +11,7 @@
 <title>랜 덤 박 스 !</title>
 </head>
 <body>
-	수정1
+	수정 전
 	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
 	<%
 		// 여기서는 세션에 userid값이 존재하면 불러온다
@@ -70,44 +70,16 @@
 
 	<div class="container">
 		<div style="margin: 30px 25px 15px 0px">
+		
 			<div class="jumbotron">
 				<div class="maximum" style="margin: -20px 25px 15px 0px">여기는
 					참가자 이미지</div>
-				<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
+				<textarea name="rememo" cols="88" rows="3">
 				
-				
-				
-				
-    <!-- <textarea cols="88" rows="3" class="form-control"  id="commentContent" placeholder="댓글을 입력하세요."> -->
-   <ul>
-   <li>
-   <textarea cols="88" rows="3" placeholder="댓글을 입력하세요.">
-    </textarea>
-    <div class="btn-group btn-group-sm" role="group" aria-label="..."  a>
-       <%--  <c:if test="${id == null}">
-            <input type="button" class="btn btn-default" value="댓글 쓰기" disabled="disabled"onclick="getComment(1, event)">
-        </c:if>
-        <c:if test="${id != null}"> --%>
-        <li>
-            <input type="button" class="btn btn-default" value="댓글 쓰기" id="commentWrite"onclick="getComment(1, event)">
-        <%-- </c:if> --%>
-        <input type="button" class="btn btn-default" value="댓글 읽기(${article.commentCount})" 
-                onclick="getComment(1, event)" id="commentRead">
-    </li>
-    </div>
-    </li>
-    </ul>
-    
-    
-    
-    
-    
-</div>
- 
-<!-- Comment 태그 추가 -->
-<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
-    <div id="showComment" style="text-align: center;"></div>
-</div>
+				</textarea>
+				<!-- <div class="submit" style="margin: 0px 0px 0px 150px" align="center"> -->
+					<input type="submit" value="입력"><input type="reset" value="초기화"><input type="submit" value="댓글입력">
+				<!-- </div> -->
 			</div>
 		</div>
 	</div>
