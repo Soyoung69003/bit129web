@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class MemberDAO {
@@ -12,32 +14,91 @@ public class MemberDAO {
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;
-	
-	public int isMember(MemberVO member){ 
-        String sql ="select member_pwd from boardmember where member_id=?"; 
-        int result=-1; 
-         
-        try{ 
-            pstmt=con.prepareStatement(sql); 
-            pstmt.setString(1, member.getMEMBER_ID()); 
-            rs = pstmt.executeQuery(); 
-             
-            if(rs.next()){ 
-                if(rs.getString("MEMBER_PW").equals( 
-                                    member.getMEMBER_PWD())){ 
-                    result=1;//¿œƒ°. 
-                }else{ 
-                    result=0;//∫“¿œƒ°. 
-                } 
-            }else{ 
-                result=-1;//æ∆¿Ãµ ¡∏¿Á«œ¡ˆ æ ¿Ω. 
-            } 
-        }catch(Exception ex){ 
-            System.out.println("isMember ø°∑Ø: " + ex);             
-        }finally{ 
-            if(rs!=null) try{rs.close();}catch(SQLException ex){} 
-            if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){} 
-        } 
-        return result; 
-    }
+
+	public MemberDAO() {
+		try {
+			Context init = new InitialContext();
+			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+
+		} catch (Exception ex) {
+			System.out.println("DB Ïó∞Í≤∞ Ïã§Ìå® : " + ex);
+			return;
+		}
+	}
+
+	// Î°úÍ∑∏Ïù∏ Í≤ÄÏÇ¨
+	public int isMember(MemberVO membervo) {
+		String sql = "SELECT MEMBER_PWD FROM LUNCHBOX_MEMBER WHERE MEMBER_ID=?";
+		int result = -1;
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, membervo.getMEMBER_ID());
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				if (rs.getString("MEMBER_PW").equals(membervo.getMEMBER_PWD())) {
+					result = 1;// ÏùºÏπò.
+				} else {
+					result = 0;// Î∂àÏùºÏπò.
+				}
+			} else {
+				result = -1;// ÏïÑÏù¥Îîî Ï°¥Ïû¨ÌïòÏßÄ ÏïäÏùå.
+			}
+		} catch (Exception ex) {
+			System.out.println("isMember ÏóêÎü¨: " + ex);
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return result;
+	}
+
+	// ÌöåÏõê Í∞ÄÏûÖ
+	public int insertMember(MemberVO membervo) {
+		String SQL = "insert into lunchbox_member valuse(?, ?, ?, ?, ?)";
+		int result = 0;
+
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(SQL);
+			pstmt.setString(1, membervo.getMEMBER_ID());
+			pstmt.setString(2, membervo.getMEMBER_PWD());
+			pstmt.setString(3, membervo.getMEMBER_NAME());
+			pstmt.setString(4, membervo.getMEMBER_EMAIL());
+
+			result = pstmt.executeUpdate();
+			if (result == 0)
+				return -1;
+
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return 1;
+	}
 }
