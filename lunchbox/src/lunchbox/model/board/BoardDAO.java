@@ -112,4 +112,57 @@ public class BoardDAO {
 		}
 		return null;
 	}
+
+	public int insertBoard(BoardVO boardvo) {
+		int boardNum = 0;
+		String SQL = "";
+		int result = 0;
+
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement("select max(board_num) from lunchbox_board");
+			rs = pstmt.executeQuery();
+
+			if (rs.next())
+				boardNum = rs.getInt(1) + 1;
+			else
+				boardNum = 1;
+
+			SQL = "insert into lunchbox_board (BOARD_NUM, BOARD_TITLE, BOARD_ID, BOARD_CONTENT,"
+					+"BOARD_PRESENT, BOARD_MAXPRESENT, BOARD_DATE) values (?, ?, ?, ?, ?, ?, sysdate)";
+
+			pstmt = con.prepareStatement(SQL);
+			pstmt.setInt(1, boardNum);
+			//pstmt.setString(2, board.getTile());
+			pstmt.setString(3, boardvo.getBOARD_ID());
+			pstmt.setString(4, boardvo.getBOARD_CONTENT());
+			pstmt.setInt(5, 1);
+			pstmt.setInt(6, boardvo.getBOARD_MAXPRESENT());
+
+			result = pstmt.executeUpdate();
+			if (result == 0)
+				return 0;
+
+			return 1;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return -1;
+	}
 }
