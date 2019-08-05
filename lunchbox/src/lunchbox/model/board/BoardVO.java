@@ -1,33 +1,49 @@
 package lunchbox.model.board;
 
+import java.sql.Date;
+
 public class BoardVO {
-	private String MEMBER_ID;
-	private String MEMBER_PWD;
-	private String MEMBER_NAME;
-	private String MEMBER_EMAIL;
+	private int BOARD_NUM;
+	private String BOARD_TITLE;
+	private String BOARD_ID;
+	private String BOARD_CONTENT;
+	private int BOARD_PRESENT;
+	private Date BOARD_DATE;
 	
-	public String getMEMBER_ID() {
-		return MEMBER_ID;
+	public int getBOARD_NUM() {
+		return BOARD_NUM;
 	}
-	public void setMEMBER_ID(String mEMBER_ID) {
-		MEMBER_ID = mEMBER_ID;
+	public void setBOARD_NUM(int bOARD_NUM) {
+		BOARD_NUM = bOARD_NUM;
 	}
-	public String getMEMBER_PWD() {
-		return MEMBER_PWD;
+	public String getBOARD_TITLE() {
+		return BOARD_TITLE;
 	}
-	public void setMEMBER_PWD(String mEMBER_PWD) {
-		MEMBER_PWD = mEMBER_PWD;
+	public void setBOARD_TITLE(String bOARD_TITLE) {
+		BOARD_TITLE = bOARD_TITLE;
 	}
-	public String getMEMBER_NAME() {
-		return MEMBER_NAME;
+	public String getBOARD_ID() {
+		return BOARD_ID;
 	}
-	public void setMEMBER_NAME(String mEMBER_NAME) {
-		MEMBER_NAME = mEMBER_NAME;
+	public void setBOARD_ID(String bOARD_ID) {
+		BOARD_ID = bOARD_ID;
 	}
-	public String getMEMBER_EMAIL() {
-		return MEMBER_EMAIL;
+	public String getBOARD_CONTENT() {
+		return BOARD_CONTENT;
 	}
-	public void setMEMBER_EMAIL(String mEMBER_EMAIL) {
-		MEMBER_EMAIL = mEMBER_EMAIL;
+	public void setBOARD_CONTENT(String bOARD_CONTENT) {
+		BOARD_CONTENT = bOARD_CONTENT;
+	}
+	public int getBOARD_PRESENT() {
+		return BOARD_PRESENT;
+	}
+	public void setBOARD_PRESENT(int bOARD_PRESENT) {
+		BOARD_PRESENT = bOARD_PRESENT;
+	}
+	public Date getBOARD_DATE() {
+		return BOARD_DATE;
+	}
+	public void setBOARD_DATE(Date bOARD_DATE) {
+		BOARD_DATE = bOARD_DATE;
 	}
 }
