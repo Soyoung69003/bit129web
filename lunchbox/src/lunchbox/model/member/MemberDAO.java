@@ -24,4 +24,17 @@ public class MemberDAO {
 			return;
 		}
 	}
+	
+	// 회원 가입 
+	public int insertMember(MemberVO membervo) {
+		String SQL = "insert into lunch";
+		
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(SQL);
+		} catch (Exception e) {
+
+		}
+		return 1;
+	}
 }
