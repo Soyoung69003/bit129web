@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import lunchbox.action.Action;
 import lunchbox.action.ActionForward;
-
+import lunchbox.board.action.*;
 @WebServlet("*.do")
 public class LunchBoxFrontController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 	private static final long serialVersionUID = 1L;
@@ -23,12 +23,19 @@ public class LunchBoxFrontController extends javax.servlet.http.HttpServlet impl
 		ActionForward forward = null;
 		Action action = null;
 
-		if (command.equals("/ex.do")) {
+		if (command.equals("/BoardList.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("./ex.jsp");
-		} else if (command.equals("/ex.do")) {
-			// action = new ExAction();
+			forward.setPath("./view/boardList.jsp");
+		} else if (command.equals("/BoardListAction.do")) {
+			action = new BoardListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/BoardAddAction.do")) {
+			action = new BoardAddAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
