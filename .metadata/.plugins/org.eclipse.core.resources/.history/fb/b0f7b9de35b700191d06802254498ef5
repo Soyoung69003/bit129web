@@ -1,0 +1,5 @@
+package lunchbox.action;
+
+public class MemberListAction {
+
+}
