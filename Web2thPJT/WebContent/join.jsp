@@ -60,7 +60,7 @@
       <div class="col-lg-4">
          <div class="jumbotron" style="padding-top: 20px;">
             <form method="post" action="joinAction.jsp">
-               <h3 style="text-align: center;">회원가입</h3>
+               <h3 style="text-align: center;">Sign up</h3>
                <div class="form-group">
                   <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="userID">
                </div>
@@ -73,7 +73,7 @@
                <div class="form-group">
                   <input type="email" class="form-control" placeholder="이메일을 입력하세요" name="userEmail" maxlength="20">
                </div>
-               <input type="submit" class="btn btn-primary form-control" value="회원가입" onclick="location.href = 'javascript:jsFunction();'">
+               <input type="submit" class="btn btn-primary form-control" value="Sign up" onclick="location.href = 'javascript:jsFunction();'">
             
             </form>
       

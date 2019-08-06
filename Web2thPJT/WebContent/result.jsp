@@ -32,7 +32,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="Choose.jsp"> Choose </a></li>
+				<li><a href="choose.jsp"> Choose </a></li>
 				<li class="active"><a href="result.jsp"> Result </a></li>
 				<li><a href="list.jsp"> list </a></li>
 

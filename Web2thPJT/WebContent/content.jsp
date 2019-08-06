@@ -29,7 +29,6 @@
 </head>
 
 <body>
-	본문
 	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
 	<%
 		// 여기서는 세션에 userid값이 존재하면 불러온다
@@ -55,7 +54,7 @@
 				<li><a href="Choose.jsp"> Choose </a></li>
 				<li><a href="result.jsp"> result </a></li>
 				<li class="active"><a href="content.jsp"> Content </a></li>
-
+				<li><a href="list.jsp"> list </a></li>
 			</ul>
 
 
@@ -172,8 +171,8 @@
 							id="commentWrite" onclick="getComment(1, event)"
 							style="margin: -25px 25px 15px 0px">
 						</c:if>
-					<%-- 	 <input type="button" class="btn btn-default" value="댓글 읽기(${article.commentCount})" 
-                onclick="getComment(1, event)" id="commentRead"> --%>
+						 <input type="button" class="btn btn-default" value="댓글 읽기(${article.commentCount})" 
+                onclick="getComment(1, event)" id="commentRead">
 					</div>
 
 

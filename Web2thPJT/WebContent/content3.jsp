@@ -24,7 +24,7 @@
 	src="http://maps.google.com/maps/api/js?key=AIzaSyAbpTyWwMkZjIUQYnT0PkgzIRP60_XcqtM"></script>
 <style>
 #map_ma {
-	width: 400px;
+	width: 300px;
 	height: 280px;
 	clear: both;
 	border: solid 1px red;
@@ -92,17 +92,17 @@
 	
 	
 				<h2>Target</h2>
-	<div class= "junbotron">
 	<div class="container" >
+	<div class= "jumbotron">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 col-md-3">
 		<img src="images/1.jpg" class="img-rounded" alt="Cinque Terre"
 			width="700" height="500">
 		</div>
 			
-			<div class="col-md-3">
+			<div class="col-sm-6">
 				<!-- 지도+이미지+가격표 위치 조정 -->
-			<table style="float: right; margin: 0px 50px 0px 0px ;" >
+				<table style="float: right; margin: 0px -280px 0px 0px ;" >
 				<tr class="align-top">
 					<td> 
 							<!-- 지도의 위치를 지정해주는 div -->
@@ -111,8 +111,8 @@
 				</tr>
 					<tr  class="align-bottom">
 						<td> 
-							<textarea rows="10" cols="55" disabled="disabled" >
-									글쓴이 글 받아오기
+							<textarea rows="10" cols="40" disabled="disabled" >
+					글쓴이 글 받아오기
 							</textarea>
 						</td>
 					</tr>
@@ -145,8 +145,30 @@
 						id="commentWrite" onclick="getComment(1, event)"
 						style="margin: -25px 25px 35px 10px">
 					<%-- </c:if> --%>
-					<%-- <input type="button" class="btn btn-default btn-sm" value="댓글 읽기(${article.commentCount})" 
-                onclick="getComment(1, event)" id="commentRead"> --%>
+					<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" style="margin: -25px 0px 0px -15px">
+					 댓글 읽기
+					</button> 
+					
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="ture">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">댓글</h4>
+							</div>
+							<div class="modal-body">
+							 댓글 내용
+							 </div>
+							 <div class="modal-footer">
+							 	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+							 	</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- value="댓글 읽기" 
+                onclick="getComment(1, event)" id="commentRead" > -->
 				</div>
 				<!-- Comment 태그 추가 -->
 				<div class="input-group" role="group" aria-label="..."
