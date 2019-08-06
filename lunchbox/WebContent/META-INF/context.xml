@@ -3,13 +3,11 @@
 <Context reloadable="true">
 	<WatchedResource>WEB-INF/web.xml</WatchedResource>
 	
-	<Resource name="jdbc:BoardDB"
+	<Resource name="jdbc/OracleDB"
             auth="Container"
             type="javax.sql.DataSource"
             username="magic"
             password="oracle"
             driverClassName="oracle.jdbc.driver.OracleDriver"
-            url="jdbc:oracle:thin:@localhost:1521:XE"
-		/>
-
+            url="jdbc:oracle:thin:@localhost:1521:XE" />
 </Context>

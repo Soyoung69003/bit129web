@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import lunchbox.action.Action;
 import lunchbox.action.ActionForward;
+import lunchbox.action.MemberJoinAction;
 
-@WebServlet("*.do")
+//@WebServlet("*.do")
 public class LunchBoxFrontController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,8 +28,9 @@ public class LunchBoxFrontController extends javax.servlet.http.HttpServlet impl
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./ex.jsp");
-		} else if (command.equals("/ex.do")) {
-			// action = new ExAction();
+		} else if (command.equals("/MemberJoinAction.do")) {
+			System.out.println("test");
+			action = new MemberJoinAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
