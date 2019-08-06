@@ -111,9 +111,7 @@
 					<a href="BoardList.do?page=${ page + 1 }" class="btn btn-primary">다음</a>
 				</c:otherwise>
 			</c:choose>
-
 	
-
 			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
 	</div>
