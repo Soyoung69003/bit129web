@@ -24,12 +24,12 @@ public class MemberDAO {
               con = ds.getConnection(); 
               System.out.println("connected...");
         }catch(Exception e){ 
-            System.out.println("DB 연결 실패 : " + e); 
+            System.out.println("DB ?�결 ?�패 : " + e); 
             return; 
         } 
     } 
     
-    //로그인 시도
+    //로그?? ?�도
     public int isMember(MemberVO member){ 
         String sql ="SELECT MEMBER_PWD FROM LUNCHBOX_MEMBER WHERE MEMBER_ID=?"; 
         int result=-1; 
@@ -39,17 +39,17 @@ public class MemberDAO {
             pstmt.setString(1, member.getMEMBER_ID()); 
             rs = pstmt.executeQuery(); 
              
-            if(rs.next()){ //쿼리 결과가 있으면
+            if(rs.next()){ //쿼리 결과가 ?�으�?
                 if(rs.getString("MEMBER_PWD").equals(member.getMEMBER_PWD())){ 
                     result=1;
                 }else{ 
                     result=0;
                 } 
             }else{ 
-                result=-1;//없는 아이디
+                result=-1;//?�는 ?�이??
             } 
         }catch(Exception e){ 
-            System.out.println("isMember 에러: " + e);             
+            System.out.println("isMember ?�러: " + e);             
         }finally{ 
             if(rs!=null) try{rs.close();}catch(SQLException e){} 
             if(pstmt!=null) try{pstmt.close();}catch(SQLException e){} 
@@ -57,7 +57,7 @@ public class MemberDAO {
         return result; 
     } 
      
-    //회원 가입 메소드
+    //?�원 가?? 메소??
     public boolean joinMember(MemberVO member) { 
         String sql="INSERT INTO LUNCHBOX_MEMBER VALUES (?,?,?,?)"; 
         int result=0; 
@@ -74,7 +74,7 @@ public class MemberDAO {
                 return true; 
             } 
         }catch(Exception e){ 
-            System.out.println("joinMember 에러: " + e);             
+            System.out.println("joinMember ?�러: " + e);             
         }finally{ 
             if(rs!=null) try{rs.close();}catch(SQLException e){} 
             if(pstmt!=null) try{pstmt.close();}catch(SQLException e){} 
@@ -83,7 +83,7 @@ public class MemberDAO {
     } 
      
     
-	  //관리자 기능 - 회원 목록 조회
+	  //관리자 기능 - ?�원 목록 조회
 	public List getMemberList() {
 		String sql = "SELECT * FROM LUNCHBOX_MEMBER";
 		List memberlist = new ArrayList();
@@ -103,7 +103,7 @@ public class MemberDAO {
 			return memberlist;
 			
 		} catch (Exception e) {
-			System.out.println("getDeatilMember 에러: " + e);
+			System.out.println("getDeatilMember ?�러: " + e);
 		} finally {
 			if (rs != null)
 				try {
@@ -121,7 +121,7 @@ public class MemberDAO {
 	 
     
     
-    //해당 회원 정보 보기 
+    //?�당 ?�원 ?�보 보기 
     public MemberVO getDetailMember(String id){ 
         String sql="SELECT * FROM lunchbox_member WHERE MEMBER_ID=?"; 
          
@@ -139,7 +139,7 @@ public class MemberDAO {
              
             return mb; 
         }catch(Exception e){ 
-            System.out.println("getDeatilMember 에러: " + e);             
+            System.out.println("getDeatilMember ?�러: " + e);             
         }finally{ 
             if(rs!=null) try{rs.close();}catch(SQLException e){} 
             if(pstmt!=null) try{pstmt.close();}catch(SQLException e){} 
@@ -148,7 +148,7 @@ public class MemberDAO {
         return null; 
     } 
      
-    //회원 삭제 
+    //?�원 ??�� 
     public boolean deleteMember(String id){ 
         String sql="DELETE FROM lunchbox_member WHERE MEMBER_ID=?"; 
         int result=0; 
@@ -163,7 +163,7 @@ public class MemberDAO {
                 return true; 
             } 
         }catch(Exception e){ 
-            System.out.println("deleteMember 에러: " + e);             
+            System.out.println("deleteMember ?�러: " + e);             
         }finally{ 
             if(rs!=null) try{rs.close();}catch(SQLException e){} 
             if(pstmt!=null) try{pstmt.close();}catch(SQLException e){} 
