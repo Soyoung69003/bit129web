@@ -7,18 +7,17 @@
 <meta http-equiv="Content=Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <title> 랜 덤 박 스 ! </title>
 </head>
 <body>
 	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
-	<% // 여기서는 세션에 userid값이 존재하면 불러온다
-		String userID = null;
-		if(session.getAttribute("userID") != null){
+		"${ String userID = null }"
+		<c:if test="session.getAttribute("userID") != null">
 			userID = (String) session.getAttribute("userID");
-		}
+		</c:if>
 	
-	%>
 	
 	
 	<nav class="navbar navbar-default">
