@@ -1,19 +1,15 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
-<Context>
-	<Resource name="jdbc/OracleDB" auth="Container"
-		type="javax.sql.DataSource" username="sangju" password="oracle"
-		driverClassName="oracle.jdbc.driver.OracleDriver"
-		url="jdbc:oracle:thin:@localhost:1521:xe" />
+
+<Context reloadable="true">
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+	
+	<Resource name="jdbc:BoardDB"
+            auth="Container"
+            type="javax.sql.DataSource"
+            username="magic"
+            password="oracle"
+            driverClassName="oracle.jdbc.driver.OracleDriver"
+            url="jdbc:oracle:thin:@localhost:1521:XE"
+		/>
 
 </Context>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<Context>
-	<Resource name="jdbc/OracleDB" auth="Container"
-		type="javax.sql.DataSource" username="sangju" password="oracle"
-		driverClassName="oracle.jdbc.driver.OracleDriver"
-		url="jdbc:oracle:thin:@localhost:1521:xe" />
-
-</Context>
->>>>>>> refs/remotes/origin/soyoung
