@@ -73,7 +73,7 @@
       <div class="col-lg-4">
          <div class="jumbotron" style="padding-top: 20px;">
             <form method="post" action="joinAction.jsp">
-               <h3 style="text-align: center;">Bus making</h3>
+               <h2 style="text-align: center;">Bus making</h2>
             
                <div class="form-group">
                   Name <input type="text" class="form-control"  name="userID"  readonly>

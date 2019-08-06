@@ -62,18 +62,18 @@
             <form method="post" action="joinAction.jsp">
                <h3 style="text-align: center;">회원가입</h3>
                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="userID" minlength="6" maxlength="20">
+                  <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="userID">
                </div>
                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="userPassword" minlength="6" maxlength="20">
+                  <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="userPassword" >
                </div>
                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="이름을 입력하세요" name="userName" maxlength="20">
+                  <input type="text" class="form-control" placeholder="이름을 입력하세요" name="userName" >
                </div>
                <div class="form-group">
                   <input type="email" class="form-control" placeholder="이메일을 입력하세요" name="userEmail" maxlength="20">
                </div>
-               <input type="submit" class="btn btn-primary form-control" value="회원가입">
+               <input type="submit" class="btn btn-primary form-control" value="회원가입" onclick="location.href = 'javascript:jsFunction();'">
             
             </form>
       

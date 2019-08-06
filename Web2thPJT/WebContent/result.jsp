@@ -33,9 +33,8 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="Choose.jsp"> Choose </a></li>
-				<li><a href="random.jsp"> All random </a></li>
 				<li class="active"><a href="result.jsp"> Result </a></li>
-
+				<li><a href="list.jsp"> list </a></li>
 
 
 
@@ -83,21 +82,27 @@
 							</div>
 						</div>
 						<div class="item">
+						<a href="content.jsp">
 							<img src="images/2.jpg" alt="두번째 식당입니다">
+							</a>
 							<div class="carousel-caption">
 								<h3>여기는 평범한집입니다</h3>
 								<p>걍추</p>
 							</div>
 						</div>
 						<div class="item">
+						<a href="content.jsp">
 							<img src="images/3.jpg" alt="두번째 식당입니다">
+							</a>
 							<div class="carousel-caption">
 								<h3>여기는 평범한집입니다</h3>
 								<p>걍추</p>
 							</div>
 						</div>
 						<div class="item">
+						<a href="content.jsp">
 							<img src="images/4.jpg" alt="두번째 식당입니다">
+							</a>
 							<div class="carousel-caption">
 								<h3>여기는 평범한집입니다</h3>
 								<p>걍추</p>
@@ -117,7 +122,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
