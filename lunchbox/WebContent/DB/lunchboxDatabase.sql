@@ -17,8 +17,7 @@ CREATE TABLE LUNCHBOX_BOARD (
 	BOARD_TITLE VARCHAR2(20),
 	BOARD_ID VARCHAR2(20),
 	BOARD_CONTENT VARCHAR2(2024),
-	BOARD_PRESENT NUMBER, -- 현황
-    BOARD_MAXPRESENT NUMBER, -- 현황 설정
+	BOARD_PRESENT NUMBER, --현황
 	BOARD_DATE DATE
 );
 ------------------------------------------ COMMENT SQL
@@ -27,8 +26,8 @@ DROP TABLE LUNCHBOX_COMMENT;
 
 CREATE TABLE LUNCHBOX_COMMENT (
 	COMMENT_NUMBER NUMBER PRIMARY KEY,
-	COMMENT_BOARD_NUMBER VARCHAR2(20), --게시글 번호 ?�래??
-	COMMENT_NAME VARCHAR2(20), --?�성?? ?�름
+	COMMENT_BOARD_NUMBER VARCHAR2(20), --게시글 번호 외래키
+	COMMENT_NAME VARCHAR2(20), --작성자 이름
 	COMMENT_CONTENT VARCHAR2(2024)
 );
 ------------------------------------------ RESTO SQL
@@ -43,3 +42,25 @@ CREATE TABLE LUNCHBOX_RESTO (
 	RESTO_CATEGORY VARCHAR2(20)
 );
 
+-------------------------------------------- MEMBER dummy
+insert into lunchbox_member values (
+	'sangju', '1234', '현상주', 'sangju@test.com'
+	);
+
+insert into lunchbox_member values (
+	'soyoung', '1234', '이소영', 'soyoung@test.com'
+	);	
+
+insert into lunchbox_member values (
+	'ahs', '1234', '안희수', 'ahs@test.com'
+	);	
+
+insert into lunchbox_member values (
+	'magic', '1234', '이태성', 'magic@test.com'
+	);		
+	
+insert into lunchbox_member values (
+	'jjm', '1234', '정준모', 'jjm@test.com'
+	);	
+commit;
+select * from lunchbox_member;

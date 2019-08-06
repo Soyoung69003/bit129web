@@ -17,12 +17,13 @@ public class BoardAddAction implements Action {
 		BoardVO boardvo = new BoardVO();
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
-		String sessionID = (String)session.getAttribute("id");
+		String sessionName = (String)session.getAttribute("userName");
+	
 		int result = 0;
 
 		try {
-			//boardvo.setBOARD_TITLE(session.toString());
-			boardvo.setBOARD_ID(sessionID);
+			//boardvo.setBOARD_TITLE();
+			boardvo.setBOARD_ID(sessionName);
 			boardvo.setBOARD_CONTENT(request.getParameter("BOARD_CONTENT"));
 			boardvo.setBOARD_MAXPRESENT(Integer.parseInt(request.getParameter("BOARD_MAXPRESENT")));
 
