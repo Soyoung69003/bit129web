@@ -23,7 +23,8 @@
 			<%if(id!=null && id.equals("admin")){%>
 				<a href="./MemberListAction.me">[회원관리]</a>
 			<%}%>
-	   		<a href="./BoardWrite.bo">[글쓰기]</a>
+	   		<a href="./BoardWrite.me">[글쓰기]</a>
+	   		<a href="./BoardListAction.do">[게시판 테스트]</a>
 		</td>
 	</tr>
 </table>

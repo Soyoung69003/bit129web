@@ -16,89 +16,91 @@ import lunchbox.action.MemberJoinAction;
 import lunchbox.action.MemberListAction;
 import lunchbox.action.MemberLoginAction;
 
-public class MemberFrontController extends HttpServlet implements Servlet{ 
-    static final long serialVersionUID=1L; 
-    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{ 
-        String RequestURI=request.getRequestURI(); 
-        String contextPath=request.getContextPath(); 
-        String command = RequestURI.substring(contextPath.length()); 
-        ActionForward forward = null; 
-        Action action = null; 
-        
-        //로그인화면 요청이 들어오면
-        if(command.equals("/MemberLogin.me")){ 
-            forward=new ActionForward(); 
-            forward.setRedirect(false); 
-            forward.setPath("./loginForm.jsp"); 
-            
-        //로그인 시도가 들어오면
-        }else if(command.equals("/MemberLoginAction.me")){ 
-            action=new MemberLoginAction(); 
-            try { 
-                forward=action.execute(request, response); 
-            } catch (Exception e) { 
-                e.printStackTrace(); 
-            } 
-            
-         //회원가입화면 요청이 들어오면
-        }else if(command.equals("/MemberJoin.me")){ 
-            forward = new ActionForward(); 
-            forward.setRedirect(false); 
-            forward.setPath("./joinForm.jsp"); 
-            
-            //회원가입 버튼을 누르면
-        }else if(command.equals("/MemberJoinAction.me")){ 
-        	System.out.println("회원가입 시도");
-            action=new MemberJoinAction(); 
-            try { 
-                forward=action.execute(request, response); 
-            } catch (Exception e) { 
-                e.printStackTrace(); 
-            }
+public class MemberFrontController extends HttpServlet implements Servlet {
+	static final long serialVersionUID = 1L;
 
-			// 회원목록 조회 버튼을 누르면 
-            }else if(command.equals("/MemberListAction.me")){
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String RequestURI = request.getRequestURI();
+		String contextPath = request.getContextPath();
+		String command = RequestURI.substring(contextPath.length());
+		ActionForward forward = null;
+		Action action = null;
+
+		// 로그인화면 요청이 들어오면
+		if (command.equals("/MemberLogin.me")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./loginForm.jsp");
+
+			// 로그인 시도가 들어오면
+		} else if (command.equals("/MemberLoginAction.me")) {
+			action = new MemberLoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			// 회원가입화면 요청이 들어오면
+		} else if (command.equals("/MemberJoin.me")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./joinForm.jsp");
+
+			// 회원가입 버튼을 누르면
+		} else if (command.equals("/MemberJoinAction.me")) {
+			System.out.println("회원가입 시도");
+			action = new MemberJoinAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			// 회원목록 조회 버튼을 누르면
+		} else if (command.equals("/MemberListAction.me")) {
 			action = new MemberListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			 
-            
-            //해당회원 정보 보기를 누르면
+
+			// 해당회원 정보 보기를 누르면
 			/*
 			 * }else if(command.equals("/MemberViewAction.me")){ action=new
 			 * MemberViewAction(); try { forward=action.execute(request, response); } catch
 			 * (Exception e) { e.printStackTrace(); }
 			 */
-        
-		//회원삭제 요청이 들어오면
-        }else if(command.equals("/MemberDeleteAction.me")) { 
-            action=new MemberDeleteAction(); 
-            try { 
-                forward=action.execute(request, response); 
-            } catch (Exception e) { 
-                e.printStackTrace(); 
-            } 
-        } //if end
-        
-        
-        if(forward!=null){ 
-            if(forward.isRedirect()){ 
-                response.sendRedirect(forward.getPath()); 
-            }else{ 
-                RequestDispatcher dispatcher=request.getRequestDispatcher(forward.getPath()); 
-                dispatcher.forward(request, response); 
-            } 
-        }         
-    } 
-     
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{ 
-        doProcess(request, response); 
-    } 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{ 
-        doProcess(request, response); 
-    } 
-}
 
+			// 회원삭제 요청이 들어오면
+		} else if (command.equals("/MemberDeleteAction.me")) {
+			action = new MemberDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // if end
+
+		if (forward != null) {
+			if (forward.isRedirect()) {
+				response.sendRedirect(forward.getPath());
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(request, response);
+			}
+		}
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doProcess(request, response);
+	}
+}

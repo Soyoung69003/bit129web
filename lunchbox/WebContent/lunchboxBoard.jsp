@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content=Type" content="text/html; charset="UTF-8">
+<meta http-equiv="Content=Type" content="text/html; charset = UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 
@@ -37,7 +37,7 @@
 							aria-expanded="false">접속하기<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="login.jsp">로그인</a></li>
-								<!-- <li><a href="join.jsp">회원가입</a></li> -->
+								<li><a href="join.jsp">회원가입</a></li>
 							</ul></li>
 					</ul>
 				</c:when>
@@ -59,24 +59,21 @@
 	<div class="container">
 		<div class="row">
 			<table class="table table-striped" style="text-align: center;">
-				<thread>
 				<tr>
 					<th style="background-color: #eeeeee; text-align: center;">번호</th>
 					<th style="background-color: #eeeeee; text-align: center;">제목</th>
 					<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-					<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+					<th style="background-color: #eeeeee; text-align: center;">현황</th>
 				</tr>
-				</thread>
 				<tbody>
 					<c:forEach items="${ BoardList }" var="vo">
 						<tr>
-							<td><c:out value="${ vo.getBOARD_NUM }" /></td>
+							<td>${ vo.BOARD_NUM }"</td>
 							<td><a
-								href="view.jsp?boardNum=${ vo.getBOARD_NUM }&myPage=${ page }"><c:out
-										value="${ vo.getBOARD_TITLE }" /></a></td>
-							<td><c:out value="${ vo.getBOARD_ID }" /><</td>
-							<td><c:out value="${ vo.getBOARD_PRESENT }" /> / <c:out
-									value="${ vo.getBOARD_MAXPRESENT }" /></td>
+								href="view.jsp?boardNum=${ vo.BOARD_NUM }&myPage=${ page }">
+									value="${ vo.BOARD_TITLE }"</a></td>
+							<td>${ vo.BOARD_ID }"</td>
+							<td>${ vo.BOARD_PRESENT }"/${ vo.BOARD_MAXPRESENT }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -95,7 +92,7 @@
 			<c:forEach var="i" begin="${ startpage }" end="${ endpage }">
 				<c:choose>
 					<c:when test="${ i == page }">
-						i 
+						${ i }
 					</c:when>
 					<c:otherwise>
 						<a href="./BoardList.do?page=${ i }">i</a>
@@ -111,7 +108,7 @@
 					<a href="BoardList.do?page=${ page + 1 }" class="btn btn-primary">다음</a>
 				</c:otherwise>
 			</c:choose>
-	
+
 			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
 	</div>

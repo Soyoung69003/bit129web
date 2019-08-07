@@ -11,16 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import lunchbox.action.Action;
 import lunchbox.action.ActionForward;
-import lunchbox.action.MemberDeleteAction;
-import lunchbox.action.MemberJoinAction;
-import lunchbox.action.MemberListAction;
-import lunchbox.action.MemberLoginAction;
+import lunchbox.board.action.BoardListAction;
 
 public class LunchBoxFrontController extends HttpServlet implements Servlet {
 	static final long serialVersionUID = 1L;
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
@@ -28,11 +26,20 @@ public class LunchBoxFrontController extends HttpServlet implements Servlet {
 		Action action = null;
 
 		// 로그인화면 요청이 들어오면
-		if (command.equals("/ex.bo")) {
+		if (command.equals("/asd.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("./ex.jsp");
+			forward.setPath("./asd.jsp");
+		} else if (command.equals("/BoardListAction.do")) {
+			System.out.println("test");
+			action = new BoardListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
 		if (forward != null) {
 			if (forward.isRedirect()) {
 				response.sendRedirect(forward.getPath());
