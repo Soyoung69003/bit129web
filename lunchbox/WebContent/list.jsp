@@ -8,9 +8,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 
-<title> 랜 덤 박 스 ! </title>
+<title> list </title>
 </head>
 <body>
+
+<div align="right">
+    <!-- Login 검증 -->
+    <!-- jstl의 if문은 else가 없어서 따로 검증해야함. -->
+    <c:if test="${id != null}">
+      <%-- <%@include file="loginOk.jsp" %> --%>
+    </c:if>
+    <c:if test="${id == null}">
+      <%-- <%@include file="login.jsp" %> --%>
+    </c:if>
+  </div>
+
 	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
 	
 	
@@ -62,12 +74,13 @@
                   <th style="background-color: #eeeeee; text-align: center;">작성자</th>
                   <th style="background-color: #eeeeee; text-align: center;">작성일</th>
                </tr>
+               
             <tbody>
                <tr>
-                  <td></td>
-                  <td><a href="view.jsp?bbsID=&myPage="></a></td>    
-                  <td></td>
-                  <td></td>    
+                  <td>$"{ 3 }"</td>
+                  <td>$"{ Board.BOARD_TITLE }"</td>    
+                  <td>$"{ 4 }"</td>
+                  <td>$"{ 5 }"</td>    
                </tr>
                <!-- <tr>
                   <td>9999</td>
