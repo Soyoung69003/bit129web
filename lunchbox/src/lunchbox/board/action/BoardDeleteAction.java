@@ -1,4 +1,4 @@
-package lunchbox.board.action;
+﻿package lunchbox.board.action;
 
 import java.io.PrintWriter;
 
@@ -18,9 +18,8 @@ public class BoardDeleteAction implements Action {
 		ActionForward forward = new ActionForward();
 		request.setCharacterEncoding("UTF-8");
 		boolean result = false;
-		boolean usercheck = false;
-		int num = Integer.parseInt(request.getParameter("num")); // get num
-
+		int num = Integer.parseInt(request.getParameter("num")); // get 게시판 num
+		
 		BoardDAO boarddao = new BoardDAO();
 
 		result = boarddao.deleteBoard(num);
@@ -31,7 +30,7 @@ public class BoardDeleteAction implements Action {
 
 		System.out.println("게시판 삭제 성공");
 		forward.setRedirect(true);
-		forward.setPath("./BoardList.bo");
+		forward.setPath("./lunchboxBoard.bo");
 		return forward;
 	}
 

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -61,7 +61,10 @@
       </div>
    </div>
        </c:when>
-</c:choose>  
+		<c:otherwise>
+			<c:redirect url = "/main.jsp" context = "/lunchbox/"/>
+		</c:otherwise>
+	</c:choose>  
 <!-- soyoung 끝 -->  
    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
    <script src="js/bootstrap.js"></script>

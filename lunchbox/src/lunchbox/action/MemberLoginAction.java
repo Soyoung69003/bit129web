@@ -1,4 +1,4 @@
-package lunchbox.action;
+﻿package lunchbox.action;
 
 import java.io.PrintWriter;
 
@@ -23,6 +23,8 @@ public class MemberLoginAction implements Action {
         //로그인폼에서 입력한 값을 MemberVO객체에 저장 
         member.setMEMBER_ID(request.getParameter("MEMBER_ID")); 
         member.setMEMBER_PWD(request.getParameter("MEMBER_PWD")); 
+        member.setMEMBER_NAME(request.getParameter("MEMBER_NAME")); 
+        member.setMEMBER_EMAIL(request.getParameter("MEMBER_EMAIL")); 
         result=memberdao.isMember(member);
          
         //로그인 실패

@@ -1,6 +1,4 @@
-package lunchbox.board.action;
-
-import java.io.PrintWriter;
+﻿package lunchbox.board.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,17 +16,18 @@ public class BoardModifyAction implements Action {
 		ActionForward forward = new ActionForward();
 		boolean result = false;
 
-		int num = Integer.parseInt(request.getParameter("BOARD_NUM"));
-
+		int num = Integer.parseInt(request.getParameter("num"));
+		
 		BoardDAO boarddao = new BoardDAO();
-		BoardVO boarddata = new BoardVO();
+		BoardVO boardvo = new BoardVO();
 
 		try {
 			
-			boarddata.setBOARD_NUM(num);
-			boarddata.setBOARD_CONTENT(request.getParameter("BOARD_CONTENT"));
+			boardvo.setBOARD_NUM(num);
+			boardvo.setBOARD_CONTENT(request.getParameter("BOARD_CONTENT"));
+			boardvo.setBOARD_MAXPRESENT(Integer.parseInt(request.getParameter("BOARD_MAXPRESENT")));
 
-			result = boarddao.boardModify(boarddata);
+			result = boarddao.boardModify(boardvo);
 			if (result == false) {
 				System.out.println("게시판 수정 실패");
 				return null;
@@ -36,12 +35,11 @@ public class BoardModifyAction implements Action {
 			System.out.println("게시판 수정 완료");
 
 			forward.setRedirect(true);
-			forward.setPath("./BoardDetailAction.do?num=" + boarddata.getBOARD_NUM());
+			forward.setPath("./BoardDetailAction.do?num=" + boardvo.getBOARD_NUM());
 			return forward;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
 		return null;
 	}
 

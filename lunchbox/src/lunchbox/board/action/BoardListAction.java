@@ -1,4 +1,4 @@
-package lunchbox.board.action;
+﻿package lunchbox.board.action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import lunchbox.action.Action;
 import lunchbox.action.ActionForward;
 import lunchbox.model.board.BoardDAO;
+import lunchbox.model.board.BoardVO;
 
 public class BoardListAction implements Action {
 
@@ -16,17 +17,17 @@ public class BoardListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		BoardDAO boarddao = new BoardDAO();
-		List boardList = new ArrayList();
+		List<BoardVO> boardList = new ArrayList<BoardVO>();
 
 		int page = 1, limit = 10;
 
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-		System.out.println("action");
+
 		int listcount = boarddao.getListCount();
 		boardList = boarddao.getBoardList(page, limit);
-		
+
 		// 총 페이지 수
 		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95를 더해서 올림 처리
 		// 현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...)

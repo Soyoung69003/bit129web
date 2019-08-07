@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -40,15 +40,7 @@
 					<li><a href="Choose.jsp"> Choose </a></li>
 					<li><a href="result.jsp"> Result </a></li>
 					<li class = "active"><a href="list.jsp"> List </a></li>
-					
-					
 			</ul>
-			
-			
-			
-			
-			
-			
 	
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -104,9 +96,6 @@
          <a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
       </div>
    </div>
-
-
-
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
