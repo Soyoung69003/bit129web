@@ -46,9 +46,8 @@ public class MemberFrontController extends HttpServlet implements Servlet{
             forward.setRedirect(false); 
             forward.setPath("./joinForm.jsp"); 
             
-            //회원가입 버튼을 누르면
+         //정보 입력 후 회원가입 버튼을 누르면
         }else if(command.equals("/MemberJoinAction.me")){ 
-        	System.out.println("회원가입 시도");
             action=new MemberJoinAction(); 
             try { 
                 forward=action.execute(request, response); 
@@ -64,7 +63,6 @@ public class MemberFrontController extends HttpServlet implements Servlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			 
             
             //해당회원 정보 보기를 누르면
 			/*
@@ -82,7 +80,6 @@ public class MemberFrontController extends HttpServlet implements Servlet{
                 e.printStackTrace(); 
             } 
         } //if end
-        
         
         if(forward!=null){ 
             if(forward.isRedirect()){ 

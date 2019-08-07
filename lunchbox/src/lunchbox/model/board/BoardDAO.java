@@ -64,8 +64,8 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> getBoardList(int page, int limit) {
-		String SQL = "select board_num, board_titlem, board_id, board_present, "
-				+ "board_date from lunchbox_board where board_num >= ? and board_num <= ?"; // ?
+		String SQL = "select board_num, board_title, board_id, board_content, board_present, "
+				+ "board_date, board_maxpresent from lunchbox_board where board_num >= ? and board_num <= ?"; // ?
 
 		List<BoardVO> list = new ArrayList<BoardVO>();
 
@@ -87,12 +87,12 @@ public class BoardDAO {
 				board.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
 				board.setBOARD_PRESENT(rs.getInt("BOARD_PRESENT"));
 				board.setBOARD_DATE(rs.getDate("BOARD_DATE"));
+				board.setBOARD_MAXPRESENT(rs.getInt("BOARD_MAXPRESENT"));
 				list.add(board);
 			}
-
 			return list;
 		} catch (Exception ex) {
-			System.out.println("getBoardList 에러 : " + ex);
+			ex.printStackTrace();
 		} finally {
 			if (rs != null)
 				try {

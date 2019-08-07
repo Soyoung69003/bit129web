@@ -1,10 +1,8 @@
-package lunchbox.member.action;
+package lunchbox.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import lunchbox.action.Action;
-import lunchbox.action.ActionForward;
 import lunchbox.model.member.MemberDAO;
 import lunchbox.model.member.MemberVO;
 

@@ -1,4 +1,4 @@
-package lunchbox.member.action;
+package lunchbox.action;
 
 import java.io.PrintWriter;
 
@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import lunchbox.action.Action;
-import lunchbox.action.ActionForward;
 import lunchbox.model.member.MemberDAO;
 import lunchbox.model.member.MemberVO;
 
@@ -53,7 +51,8 @@ public class MemberLoginAction implements Action {
         System.out.println("세션 바인딩 완료");
         forward.setRedirect(true);//접속 reset
 //        forward.setPath("./BoardList.do");//원래 일루 가야 되는데
-        forward.setPath("boardList.jsp");//임시테스트용
+//        forward.setPath("boardList.jsp");//임시테스트용
+        forward.setPath("main.jsp");
         return forward; 
     } 
 }

@@ -1,4 +1,4 @@
-package lunchbox.member.action;
+package lunchbox.action;
 
 import java.io.PrintWriter;
 
@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import lunchbox.action.Action;
-import lunchbox.action.ActionForward;
 import lunchbox.model.member.MemberDAO;
 
 public class MemberDeleteAction implements Action {

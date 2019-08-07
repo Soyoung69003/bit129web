@@ -13,10 +13,11 @@
 </head>
 <body>
 	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
-		"${ String userID = null }"
-		<c:if test="session.getAttribute("userID") != null">
-			userID = (String) session.getAttribute("userID");
-		</c:if>
+		<c:choose>
+   <c:when test='${session.id!=null }'>
+      <c:set var="id" value="${session.id }"/>
+   </c:when>
+</c:choose>
 	
 	
 	
@@ -42,8 +43,8 @@
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false"> Connect <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="login.jsp"> Sign in </a></li>
-						<li><a href="join.jsp"> Sign up </a></li>
+						<li><a href="loginForm.jsp"> Sign in </a></li>
+						<li><a href="joinForm.jsp"> Sign up </a></li>
 					</ul>
 				</li>
 			</ul>
@@ -54,16 +55,15 @@
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
          <div class="jumbotron" style="margin: 100px 25px 15px 0px">
-            <form method="post" action="joinAction.jsp">
+            <form method="post" action="main.jsp">
                <h3 style="text-align: center;">Sign in</h3>
                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="userID" minlength="6" maxlength="20">
+                  <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="userID" >
                </div>
                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="userPassword" minlength="6" maxlength="20">
+                  <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="userPassword" >
                </div>
-               <input type="submit" class="btn btn-primary form-control" value="Sign in" />
-      
+               <input type="submit" class="btn btn-primary form-control" value="Sign in" onclick="location.href = 'javascript:jsFunction();'"/>
             </form>
          </div>
       </div>
