@@ -15,7 +15,7 @@
 	<%
 		// 여기서는 세션에 userid값이 존재하면 불러온다
 		String userID = null;
-		if (session.getAttribute("userID") != null) {
+		if (session.dwagetAttribute("userID") != null) {
 			userID = (String) session.getAttribute("userID");
 		}
 	%>
