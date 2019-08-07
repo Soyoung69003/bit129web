@@ -9,14 +9,15 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<title> 랜 덤 박 스 ! </title>
+<title> ?? ?? �? ?? ! </title>
 </head>
 <body>
-	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
-		"${ String userID = null }"
-		<c:if test="session.getAttribute("userID") != null">
-			userID = (String) session.getAttribute("userID");
-		</c:if>
+	<!-- choose ?�션?�로 가?? id값을 ?�조하�? id값을 가?�오지 ?��? ?�태�? 로그?�하?�고 ?�려주고 메인?�면?�로 ?�려보낸?? -->
+		<c:choose>
+   <c:when test='${session.id!=null }'>
+      <c:set var="id" value="${session.id }"/>
+   </c:when>
+</c:choose>
 	
 	
 	
@@ -33,7 +34,7 @@
 			
 			
 			
-			<!-- 여기는 if로 id 값이 있으면 발동하게 한다 -->
+			<!-- ?�기?? if�? id 값이 ?�으�? 발동?�게 ?�다 -->
 	
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
@@ -57,13 +58,12 @@
             <form method="post" action="joinAction.jsp">
                <h3 style="text-align: center;">Sign in</h3>
                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="userID" minlength="6" maxlength="20">
+                  <input type="text" class="form-control" placeholder="?�이?��? ?�력?�세??" name="userID" >
                </div>
                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="userPassword" minlength="6" maxlength="20">
+                  <input type="password" class="form-control" placeholder="비�?번호�? ?�력?�세??" name="userPassword" >
                </div>
-               <input type="submit" class="btn btn-primary form-control" value="Sign in" />
-      
+               <input type="submit" class="btn btn-primary form-control" value="Sign in" onclick="location.href = 'javascript:jsFunction();'"/>
             </form>
          </div>
       </div>

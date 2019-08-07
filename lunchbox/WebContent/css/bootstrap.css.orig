@@ -10,6 +10,15 @@ html
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+<<<<<<< HEAD
+=======
+
+h3{
+	font-color: white;
+	
+}
+
+>>>>>>> origin/TaeSung
 body {
   margin: 0;
 }
@@ -3333,6 +3342,16 @@ fieldset[disabled] .btn-link:focus {
   line-height: 1.3333333;
   border-radius: 6px;
 }
+<<<<<<< HEAD
+=======
+.btn-lx,
+.btn-group-lx > .btn {
+  padding: 20px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+>>>>>>> origin/TaeSung
 .btn-sm,
 .btn-group-sm > .btn {
   padding: 5px 10px;
@@ -4843,11 +4862,35 @@ a.badge:focus {
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
+<<<<<<< HEAD
 .jumbotron {
   padding: 30px 15px;
   margin-bottom: 30px;
   color: inherit;
   background-color: #eee;
+=======
+/* .jambotron {
+  padding: 30px 15px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: black; 
+  
+}
+.junbotron {
+  padding: 30px 15px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color:  #FFCE55;#ff7f00 #fa05ea *//* #FFCE55 *//* #ff0005
+  
+} */
+
+.jumbotron {
+  padding: -100px -100px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #eee;
+  padding: -100px,-100px,-100px,-100px;
+>>>>>>> origin/TaeSung
   
 }
 .jumbotron h1,
@@ -4862,6 +4905,10 @@ a.badge:focus {
 .jumbotron > hr {
   border-top-color: #d5d5d5;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/TaeSung
 .container .jumbotron,
 .container-fluid .jumbotron {
   border-radius: 6px;

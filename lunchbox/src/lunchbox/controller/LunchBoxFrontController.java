@@ -15,9 +15,11 @@ import lunchbox.action.MemberDeleteAction;
 import lunchbox.action.MemberJoinAction;
 import lunchbox.action.MemberListAction;
 import lunchbox.action.MemberLoginAction;
+import lunchbox.action.MemberJoinAction;
 
-public class LunchBoxFrontController extends HttpServlet implements Servlet {
-	static final long serialVersionUID = 1L;
+//@WebServlet("*.do")
+public class LunchBoxFrontController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
+	private static final long serialVersionUID = 1L;
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -27,11 +29,17 @@ public class LunchBoxFrontController extends HttpServlet implements Servlet {
 		ActionForward forward = null;
 		Action action = null;
 
-		// 로그인화면 요청이 들어오면
-		if (command.equals("/ex.bo")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./ex.jsp");
+		} else if (command.equals("/MemberJoinAction.do")) {
+			System.out.println("test");
+			action = new MemberJoinAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		if (forward != null) {
 			if (forward.isRedirect()) {

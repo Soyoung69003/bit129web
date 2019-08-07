@@ -8,12 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 
-<title>랜 덤 박 스 !</title>
+<title>?? ?? �? ?? !</title>
 </head>
 <body>
-	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
+	<!-- choose ?�션?�로 가?? id값을 ?�조하�? id값을 가?�오지 ?��? ?�태�? 로그?�하?�고 ?�려주고 메인?�면?�로 ?�려보낸?? -->
 	<%
-		// 여기서는 세션에 userid값이 존재하면 불러온다
+		// ?�기?�는 ?�션?? userid값이 존재?�면 불러?�다
 		String userID = null;
 		if (session.getAttribute("userID") != null) {
 			userID = (String) session.getAttribute("userID");
@@ -32,10 +32,9 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="Choose.jsp"> Choose </a></li>
-				<li><a href="random.jsp"> All random </a></li>
+				<li><a href="choose.jsp"> Choose </a></li>
 				<li class="active"><a href="result.jsp"> Result </a></li>
-
+				<li><a href="list.jsp"> list </a></li>
 
 
 
@@ -47,7 +46,7 @@
 
 
 
-			<!-- 여기는 if로 id 값이 있으면 발동하게 한다 -->
+			<!-- ?�기?? if�? id 값이 ?�으�? 발동?�게 ?�다 -->
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -75,31 +74,37 @@
 					<div class="carousel-inner">
 						<div class="item active">
 							<a href="content.jsp"> <img src="images/1.jpg"
-								alt="첫번째 식당입니다">
+								alt="첫번�? ?�당?�니??">
 							</a>
 							<div class="carousel-caption">
-								<h3>여기는 맛집입니다</h3>
+								<h3>?�기?? 맛집?�니??</h3>
 								<p>강추</p>
 							</div>
 						</div>
 						<div class="item">
-							<img src="images/2.jpg" alt="두번째 식당입니다">
+						<a href="content.jsp">
+							<img src="images/2.jpg" alt="?�번�? ?�당?�니??">
+							</a>
 							<div class="carousel-caption">
-								<h3>여기는 평범한집입니다</h3>
+								<h3>?�기?? ?�범?�집?�니??</h3>
 								<p>걍추</p>
 							</div>
 						</div>
 						<div class="item">
-							<img src="images/3.jpg" alt="두번째 식당입니다">
+						<a href="content.jsp">
+							<img src="images/3.jpg" alt="?�번�? ?�당?�니??">
+							</a>
 							<div class="carousel-caption">
-								<h3>여기는 평범한집입니다</h3>
+								<h3>?�기?? ?�범?�집?�니??</h3>
 								<p>걍추</p>
 							</div>
 						</div>
 						<div class="item">
-							<img src="images/4.jpg" alt="두번째 식당입니다">
+						<a href="content.jsp">
+							<img src="images/4.jpg" alt="?�번�? ?�당?�니??">
+							</a>
 							<div class="carousel-caption">
-								<h3>여기는 평범한집입니다</h3>
+								<h3>?�기?? ?�범?�집?�니??</h3>
 								<p>걍추</p>
 							</div>
 						</div>
@@ -113,11 +118,10 @@
 						class="glyphicon glyphicon-chevron-right"></span>
 					</a>
 				</div>
-				<p class="text-center" style="margin: 50px 0px 0px 0px">원하는 이미지를 눌러주세요</p>
+				<p class="text-center" style="margin: 50px 0px 0px 0px">?�하?? ?��?지�? ?�러주세??</p>
 			</div>
 		</div>
 	</div>
-
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
