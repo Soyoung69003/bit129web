@@ -6,30 +6,31 @@ import javax.servlet.http.HttpServletResponse;
 import lunchbox.model.member.MemberDAO;
 import lunchbox.model.member.MemberVO;
 
-public class MemberJoinAction implements Action {
+public class MemberJoinAction implements Action{ 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception { 
-        request.setCharacterEncoding("utf-8"); //ÇÑ±ÛÃ³¸® 
+    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception { 
+        request.setCharacterEncoding("utf-8"); //í•œê¸€ì²˜ë¦¬ 
         ActionForward forward = new ActionForward(); 
         MemberDAO memberdao = new MemberDAO(); 
         MemberVO member = new MemberVO(); 
-        boolean result = false; 
+        boolean result=false; 
          
-        /*ÀÔ·Â Á¤º¸¸¦ MemberVO°´Ã¼¿¡ ÀúÀå*/ 
+        /*ì…ë ¥ ì •ë³´ë¥¼ memberVOê°ì²´ì— ì €ì¥*/ 
         member.setMEMBER_ID(request.getParameter("MEMBER_ID")); 
-        member.setMEMBER_PWD(request.getParameter("MEMBER_PWD")); 
+        member.setMEMBER_PWD(request.getParameter("MEMBER_PW")); 
         member.setMEMBER_NAME(request.getParameter("MEMBER_NAME")); 
         member.setMEMBER_EMAIL(request.getParameter("MEMBER_EMAIL")); 
-        result=memberdao.addMember(member); // dao¿¡ joinmember¸Ş¼­µå¸¦ ½ÇÇàÇØ¼­ È¸¿ø°¡ÀÔÃ³¸®         
+        result=memberdao.joinMember(member); // daoì— joinmemberë©”ì„œë“œë¥¼ ì‹¤í–‰í•´ì„œ íšŒì›ê°€ì…ì²˜ë¦¬         
 
-        //È¸¿ø°¡ÀÔ ½ÇÆĞ½Ã null¹İÈ¯ 
-        if(result == false){ 
-            System.out.println("È¸¿ø°¡ÀÔ ½ÇÆĞ"); 
+        //íšŒì›ê°€ì… ì‹¤íŒ¨ì‹œ nullë°˜í™˜ 
+        if(result==false){ 
+            System.out.println("íšŒì›ê°€ì… ì‹¤íŒ¨"); 
             return null; 
         }     
-        //È¸¿ø°¡ÀÔ ¼º°ø 
+        //íšŒì›ê°€ì… ì„±ê³µ 
         forward.setRedirect(true); 
-        forward.setPath("./MemberLogin.do");         
+        System.out.println("íšŒì›ê°€ì… ì„±ê³µ!");
+        forward.setPath("./MemberLogin.me");         
         return forward; 
-    }
+    } 
 }

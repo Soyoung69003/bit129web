@@ -42,3 +42,25 @@ CREATE TABLE LUNCHBOX_RESTO (
 	RESTO_CATEGORY VARCHAR2(20)
 );
 
+-------------------------------------------- MEMBER dummy
+insert into lunchbox_member values (
+	'sangju', '1234', '현상주', 'sangju@test.com'
+	);
+
+insert into lunchbox_member values (
+	'soyoung', '1234', '이소영', 'soyoung@test.com'
+	);	
+
+insert into lunchbox_member values (
+	'ahs', '1234', '안희수', 'ahs@test.com'
+	);	
+
+insert into lunchbox_member values (
+	'magic', '1234', '이태성', 'magic@test.com'
+	);		
+	
+insert into lunchbox_member values (
+	'jjm', '1234', '정준모', 'jjm@test.com'
+	);	
+commit;
+select * from lunchbox_member;

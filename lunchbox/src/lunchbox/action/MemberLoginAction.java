@@ -14,42 +14,45 @@ public class MemberLoginAction implements Action {
 	@Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception { 
         ActionForward forward = new ActionForward(); 
-        HttpSession session = request.getSession(); //È¸¿ø ÀÎÁõ ¼º°ø½Ã ¾ÆÀÌµğ¸¦ ¼¼¼Ç¿¡ µî·ÏÇØ¾ß ÇÔ 
+        HttpSession session = request.getSession();
         MemberDAO memberdao = new MemberDAO(); 
         MemberVO member = new MemberVO(); 
          
-        int result=-1; // default -1(¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾ÊÀ½) 
+        int result=-1; // ì—†ëŠ” ì•„ì´ë””
         
-        //·Î±×ÀÎÆû¿¡¼­ ÀÔ·ÂÇÑ °ªÀ» MemberVO°´Ã¼¿¡ ÀúÀå 
+        //ë¡œê·¸ì¸í¼ì—ì„œ ì…ë ¥í•œ ê°’ì„ MemberVOê°ì²´ì— ì €ì¥ 
         member.setMEMBER_ID(request.getParameter("MEMBER_ID")); 
         member.setMEMBER_PWD(request.getParameter("MEMBER_PWD")); 
-        result=memberdao.isMember(member); //È¸¿øÀÎÁö ¾Æ´ÑÁö È®ÀÎÇØÁÖ´Â ¸Ş¼Òµå
+        result=memberdao.isMember(member);
          
-        //·Î±×ÀÎ ½ÇÆĞ
-        if(result==0){ //ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡
+        //ë¡œê·¸ì¸ ì‹¤íŒ¨
+        if(result==0){ //ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜
             response.setContentType("text/html;charset=utf-8"); 
             PrintWriter out = response.getWriter(); 
             out.println("<script>"); 
-            out.println("alert('ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä');"); 
-            out.println("location.href='./MemberLogin.do';"); 
+            out.println("alert('ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”');"); 
+            out.println("location.href='./MemberLogin.me';"); 
             out.println("</script>"); 
             out.close(); 
             return null; 
-        }else if(result==-1){ //¾ÆÀÌµğ ¾øÀ½
+        }else if(result==-1){ //ì•„ì´ë”” ì—†ìŒ
             response.setContentType("text/html;charset=utf-8"); 
             PrintWriter out = response.getWriter(); 
             out.println("<script>"); 
-            out.println("alert('¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.');"); 
-            out.println("location.href='./MemberLogin.do';"); 
+            out.println("alert('ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.');"); 
+            out.println("location.href='./MemberLogin.me';"); 
             out.println("</script>"); 
             out.close(); 
             return null; 
         }         
          
-        //·Î±×ÀÎ ¼º°ø
-        session.setAttribute("id", member.getMEMBER_ID()); //¼¼¼Ç¿¡ id Á¤º¸ ¹­¾îÁÜ 
-        forward.setRedirect(true);//Á¢¼Ó²÷¾ú´Ù°¡ ´Ù½Ã¿¬°áÇÏ¸é¼­ »õ·Î¿î Á¤º¸¸¦ º¸¿©ÁØ´Ù. 
-        forward.setPath("./BoardList.do"); //°Ô½ÃÆÇ ¸ñ·Ï º¸±â ¿äÃ». 
+        //ë¡œê·¸ì¸ ì„±ê³µ
+        session.setAttribute("id", member.getMEMBER_ID());
+        System.out.println("ì„¸ì…˜ ë°”ì¸ë”© ì™„ë£Œ");
+        forward.setRedirect(true);//ì ‘ì† reset
+//        forward.setPath("./BoardList.do");//ì›ë˜ ì¼ë£¨ ê°€ì•¼ ë˜ëŠ”ë°
+//        forward.setPath("boardList.jsp");//ì„ì‹œí…ŒìŠ¤íŠ¸ìš©
+        forward.setPath("main.jsp");
         return forward; 
     } 
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import lunchbox.model.member.MemberDAO;
 
 public class MemberListAction implements Action{ 
+	
 	@Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception { 
         ActionForward forward = new ActionForward(); 
@@ -19,29 +20,29 @@ public class MemberListAction implements Action{
         List memberlist = new ArrayList(); 
          
         String id=(String)session.getAttribute("id"); 
-        if(id==null){ //¾ÆÀÌµğ°¡ ¾øÀ¸¸é ·Î±×ÀÎ Ã¢À» ¶ç¿ò 
+        if(id==null){
             forward.setRedirect(true); 
-            forward.setPath("./MemberLogin.do"); 
+            forward.setPath("./MemberLogin.me"); 
             return forward; 
-        }else if(!id.equals("admin")){ //°ü¸®ÀÚ°¡ ¾Æ´Ï¸é ±×³É °Ô½ÃÆÇ ¸®½ºÆ®·Î ÀÌµ¿ 
+        }else if(!id.equals("admin")){
             response.setContentType("text/html;charset=utf-8"); 
             PrintWriter out = response.getWriter(); 
             out.println("<script>"); 
-            out.println("alert('°ü¸®ÀÚ°¡ ¾Æ´Õ´Ï´Ù.')"); 
+            out.println("alert('ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.')"); 
             out.println("location.href='./BoardList.bo'"); 
             out.println("</script>"); 
             out.close(); 
             return null; 
         } 
-        //daoÅ¬·¡½º¿¡¼­ getmemberlist¸Ş¼Òµå¸¦ ÀÌ¿ë ¸â¹ö¸®½ºÆ®¸¦ ¹Ş¾Æ¿È. 
+
         memberlist=memberdao.getMemberList();  
-        if(memberlist==null){ //¸â¹ö¸®½ºÆ®°¡ nullÀÌ¸é 
-            System.out.println("È¸¿ø ¸ñ·Ï ÀĞ±â ½ÇÆĞ");             
+        if(memberlist==null){
+            System.out.println("íšŒì› ëª©ë¡ ì½ê¸° ì‹¤íŒ¨");             
             return null; 
         } 
         request.setAttribute("memberlist", memberlist); 
         forward.setRedirect(false); 
-        forward.setPath("./member/member_list.jsp"); 
+        forward.setPath("member_list.jsp"); 
         return forward; 
     } 
 }
