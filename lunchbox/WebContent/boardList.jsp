@@ -39,7 +39,7 @@
 				<a href="./MemberListAction.me">[회원관리]</a>
 			<%}%> --%>
 	   		<a href="./BoardWrite.bo">[글쓰기]</a>
-	   		<a href="./BoardListAction.bo">[게시판 테스트]</a>
+	   		<a href="./BoardListAction.bo">[게시판 테스트123]</a>
 		</td>
 	</tr>
 </table>

@@ -68,7 +68,7 @@ public class BoardDAO {
 				+ "board_date, board_maxpresent from lunchbox_board where board_num >= ? and board_num <= ?"; // ?
 
 		List<BoardVO> list = new ArrayList<BoardVO>();
-
+		System.out.println("dao");
 		int startrow = (page - 1) * 10 + 1; // 읽기 시작할 row 번호.
 		int endrow = startrow + limit - 1; // 읽을 마지막 row 번호.
 
@@ -128,7 +128,7 @@ public class BoardDAO {
 			else
 				boardNum = 1;
 
-			SQL = "insert into lunchbox_board (BOARD_NUM, BOARD_TITLE, BOARD_ID, BOARD_CONTENT,"
+			SQL = "insert into lunchbox_board (BOARD_NUM, BOARD_TITLE, BOARD_ID, BOARD_CONTENT, "
 					+ "BOARD_PRESENT, BOARD_MAXPRESENT, BOARD_DATE) values (?, ?, ?, ?, ?, ?, sysdate)";
 
 			pstmt = con.prepareStatement(SQL);
