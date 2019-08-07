@@ -7,6 +7,8 @@ import lunchbox.action.Action;
 import lunchbox.action.ActionForward;
 import lunchbox.model.board.BoardDAO;
 import lunchbox.model.board.BoardVO;
+import lunchbox.model.resto.RestoDAO;
+import lunchbox.model.resto.RestoVO;
 
 public class BoardDetailAction implements Action {
 
@@ -15,21 +17,22 @@ public class BoardDetailAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 
 		BoardDAO boarddao = new BoardDAO();
-		BoardVO boardvo = new BoardVO();
-
-		int num = Integer.parseInt(request.getParameter("num"));
-		boardvo = boarddao.getDetail(num);
-
-		if (boardvo == null) {
-			System.out.println("상세보기 실패");
-			return null;
-		}
-		System.out.println("상세보기 성공");
-
+		RestoDAO restodao = new RestoDAO();
+		int imageNum = 0;
+		
+		
+		int num = Integer.parseInt(request.getParameter("boardNum"));
+		BoardVO boardvo = boarddao.getDetail(num);
+		imageNum = restodao.getImage(boardvo.getBOARD_TITLE());
+		
+		System.out.println(boardvo.getBOARD_TITLE());
+		System.out.println(imageNum);
+		
 		request.setAttribute("boardvo", boardvo);
+		request.setAttribute("imageNum", imageNum);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./~~~.jsp"); // 상세보기 보내기
+		forward.setPath("./content.jsp"); // 상세보기 보내기
 		return forward;
 	}
 

@@ -13,27 +13,28 @@ public class BoardAddAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
 		BoardDAO boarddao = new BoardDAO();
 		BoardVO boardvo = new BoardVO();
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
-		String sessionName = (String)session.getAttribute("userName"); // 세션이름
-		int restoNum = Integer.parseInt(request.getParameter("restoNum")); // 음식 num get으로 받기
+		String sessionid = (String)session.getAttribute("id"); // 세션이름
+		System.out.println(request.getParameter("num"));
+		int restoNum = Integer.parseInt(request.getParameter("num")); // 음식 num get으로 받기
 	
-		int result = 0;
+		
 
 		try {
-			boardvo.setBOARD_ID(sessionName);
 			boardvo.setBOARD_CONTENT(request.getParameter("BOARD_CONTENT"));
 			boardvo.setBOARD_MAXPRESENT(Integer.parseInt(request.getParameter("BOARD_MAXPRESENT")));
-
-			result = boarddao.insertBoard(boardvo, restoNum);
+			
+			boarddao.insertBoard(boardvo, restoNum, sessionid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		forward.setRedirect(false);
-		forward.setPath("./lunchboxBoard.jsp");
+		forward.setRedirect(true);
+		forward.setPath("./BoardListAction.bo");
 		return forward;
 
 	}

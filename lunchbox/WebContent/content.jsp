@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
+<%@ page import="lunchbox.model.resto.*" %>
+<%@ page import="lunchbox.model.board.*" %>
+<%@ page import="lunchbox.board.action.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="id" value="${id }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,34 +20,27 @@
 	src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript"
 	src="http://maps.google.com/maps/api/js?key=AIzaSyAbpTyWwMkZjIUQYnT0PkgzIRP60_XcqtM"></script>
-		<style>
-				#map_ma {
-					width: 400px;
-					height: 250px;
-					clear: both;
-					border: solid 1px red;
-				}
-		</style>
+<style>
+#map_ma {
+	width: 400px;
+	height: 250px;
+	clear: both;
+	border: solid 1px red;
+}
+</style>
 
 </head>
 
 <body>
 	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
-	<%
-		// 여기서는 세션에 userid값이 존재하면 불러온다
-		String userID = null;
-		if (session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
-		}
-	%>
+
 
 
 	<nav class="navbar navbar-default">
 		<div class="navbar-hearder">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-taget="#bs-example-navbar-collapse-1"
-				aria-expanded="false">
-			</button>
+				aria-expanded="false"></button>
 			<a class="navbar-brand" href="main.jsp"> LUNCH BOX </a>
 		</div>
 
@@ -72,29 +68,27 @@
 			</ul>
 		</div>
 	</nav>
-				<h2>Target</h2>
-				
-		<div class= "jumbotron">
-	<div class="container"  style="padding:0px 0px 0px 0px;">
-		<img src="images/1.jpg" class="img-rounded" alt="Cinque Terre"
-			width="700" height="500">
-				<!-- 지도+이미지+가격표 위치 조정 -->
-			<table style="float: right; margin: 0px 50px 0px 0px ;" >
+	<h2>Target</h2>
+
+	<div class="jumbotron">
+		<div class="container" style="padding: 0px 0px 0px 0px;">
+			<img src="images/${ imageNum }.jpg" class="img-rounded" alt="Cinque Terre"
+				width="700" height="500">
+			<!-- 지도+이미지+가격표 위치 조정 -->
+			<table style="float: right; margin: 0px 50px 0px 0px;">
 				<tr class="align-top">
-					<td> 
-							<!-- 지도의 위치를 지정해주는 div -->
+					<td>
+						<!-- 지도의 위치를 지정해주는 div -->
 						<div id="map_ma" style="display: inline-block;"></div>
 					</td>
 				</tr>
-					<tr  class="align-bottom">
-						<td> 
-							<textarea rows="12" cols="55" disabled="disabled" >
-									글쓴이 글 받아오기
-							</textarea>
-						</td>
-					</tr>
+				<tr class="align-bottom">
+					<td><textarea rows="12" cols="55" disabled="disabled">
+							${ boardvo.BOARD_CONTENT }
+							</textarea></td>
+				</tr>
 			</table>
-</div>
+		</div>
 	</div>
 
 
@@ -146,33 +140,35 @@
 		<div style="margin: 30px 25px 15px 0px">
 			<div class="jumbotron">
 				<div class="maximum" style="margin: -20px 25px 15px 0px">여기는
-				
-					참가자 이미지
-				
-				</div>
-				<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
+
+					참가자 이미지</div>
+				<div class="input-group" role="group" aria-label="..."
+					style="margin-top: 10px; width: 100%;">
 
 
 					<!-- <textarea cols="88" rows="3" class="form-control"  id="commentContent" placeholder="댓글을 입력하세요."> -->
 					<textarea cols="88" rows="3" placeholder="댓글을 입력하세요.">
 					
-					<%
+					<%-- <%
 					request.getParameter("memo");
-					%>
+					%> --%>
+					
 					
     				</textarea>
-    				
+
 					<div class="btn-group btn-group-lg" role="group" aria-label="..." a>
-						 <c:if test="${id == null}">
-            <input type="button" class="btn btn-default" value="댓글 쓰기" disabled="disabled"onclick="getComment(1, event)">
-        </c:if>
-        <c:if test="${id != null}">
-						<input type="button" class="btn btn-warning" value="댓글 쓰기"
-							id="commentWrite" onclick="getComment(1, event)"
-							style="margin: -25px 25px 15px 0px">
+						<c:if test="${id == null}">
+							<input type="button" class="btn btn-default" value="댓글 쓰기"
+								disabled="disabled" onclick="getComment(1, event)">
 						</c:if>
-						 <input type="button" class="btn btn-default" value="댓글 읽기(${article.commentCount})" 
-                onclick="getComment(1, event)" id="commentRead">
+						<c:if test="${id != null}">
+							<input type="button" class="btn btn-warning" value="댓글 쓰기"
+								id="commentWrite" onclick="getComment(1, event)"
+								style="margin: -25px 25px 15px 0px">
+						</c:if>
+						<input type="button" class="btn btn-default"
+							value="댓글 읽기(${article.commentCount})"
+							onclick="getComment(1, event)" id="commentRead">
 					</div>
 
 

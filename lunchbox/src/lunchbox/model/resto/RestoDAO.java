@@ -3,12 +3,14 @@ package lunchbox.model.resto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import lunchbox.model.board.BoardVO;
 import lunchbox.model.resto.RestoVO;
 
 public class RestoDAO {
@@ -92,5 +94,40 @@ public class RestoDAO {
 		}
 		return list;
 	}// list end
+
+	public int getImage(String board_TITLE) {
+		int restoNumber = 0;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement("select resto_number from lunchbox_resto where resto_title = ?");
+			pstmt.setString(1, board_TITLE);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				restoNumber = rs.getInt(1);
+			}
+			return restoNumber;
+		} catch (Exception ex) {
+			System.out.println("getDetail 에러 : " + ex);
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return -1;
+	}
 
 }

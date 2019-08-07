@@ -112,8 +112,9 @@ public class BoardDAO {
 		return null;
 	}
 
-	public int insertBoard(BoardVO boardvo, int restonum) {
+	public int insertBoard(BoardVO boardvo, int restonum, String sessionID) {
 		int boardNum = 0;
+		String userName = "";
 		String SQL = "";
 		int result = 0;
 		String title = ""; // 음식점 이름 타이틀로 가져오기
@@ -128,6 +129,16 @@ public class BoardDAO {
 			else
 				boardNum = 1;
 
+			con = ds.getConnection();
+			SQL = "select member_name from lunchbox_member where member_id = ?";
+			pstmt = con.prepareStatement(SQL);
+			pstmt.setString(1, sessionID);
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				userName = rs.getString(1);
+			else
+				userName = "이름";
+			
 			SQL = "select resto_title from lunchbox_resto where resto_number = ?";
 			pstmt = con.prepareStatement(SQL);
 			pstmt.setInt(1, restonum);
@@ -143,7 +154,7 @@ public class BoardDAO {
 			pstmt = con.prepareStatement(SQL);
 			pstmt.setInt(1, boardNum);
 			pstmt.setString(2, title);
-			pstmt.setString(3, boardvo.getBOARD_ID());
+			pstmt.setString(3, userName);
 			pstmt.setString(4, boardvo.getBOARD_CONTENT());
 			pstmt.setInt(5, 1);
 			pstmt.setInt(6, boardvo.getBOARD_MAXPRESENT());
@@ -216,15 +227,15 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-
-				BoardVO board = new BoardVO();
-				board.setBOARD_NUM(rs.getInt("BOARD_NUM"));
-				board.setBOARD_TITLE(rs.getString("BOARD_TITLE"));
-				board.setBOARD_ID(rs.getString("BOARD_ID"));
-				board.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
-				board.setBOARD_PRESENT(rs.getInt("BOARD_PRESENT"));
-				board.setBOARD_MAXPRESENT(rs.getInt("BOARD_MAXPRESENT"));
-				board.setBOARD_DATE(rs.getDate("BOARD_DATE"));
+				System.out.println("test");
+				boardvo = new BoardVO();
+				boardvo.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+				boardvo.setBOARD_TITLE(rs.getString("BOARD_TITLE"));
+				boardvo.setBOARD_ID(rs.getString("BOARD_ID"));
+				boardvo.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
+				boardvo.setBOARD_PRESENT(rs.getInt("BOARD_PRESENT"));
+				boardvo.setBOARD_MAXPRESENT(rs.getInt("BOARD_MAXPRESENT"));
+				boardvo.setBOARD_DATE(rs.getDate("BOARD_DATE"));
 			}
 			return boardvo;
 		} catch (Exception ex) {

@@ -61,7 +61,7 @@
             <thread>
             <tr>
                <th style="background-color: #eeeeee; text-align: center;">번호</th>
-               <th style="background-color: #eeeeee; text-align: center;">제목</th>
+               <th style="background-color: #eeeeee; text-align: center;">가게이름</th>
                <th style="background-color: #eeeeee; text-align: center;">작성자</th>
                <th style="background-color: #eeeeee; text-align: center;">현황</th>
             </tr>
@@ -71,10 +71,10 @@
                   <tr>
                      <td>${ vo.BOARD_NUM }</td>
                      <td><a
-                        href="view.jsp?boardNum=${ vo.BOARD_NUM }&myPage=${ page }">
+                        href="BoardDetailAction.bo?boardNum=${ vo.BOARD_NUM }&myPage=${ page }">
                            ${ vo.BOARD_TITLE }</a></td>
                      <td>${ vo.BOARD_ID }</td>
-                     <td>${ vo.BOARD_PRESENT }/ ${ vo.BOARD_MAXPRESENT }</td>
+                     <td>${ vo.BOARD_PRESENT } / ${ vo.BOARD_MAXPRESENT }</td>
                   </tr>
                </c:forEach>
             </tbody>

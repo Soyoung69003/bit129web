@@ -62,7 +62,7 @@
 					<c:forEach items="${restolist}" var="vo">
 						${vo.RESTO_TITLE}
 						<div class="item">
-							<a href="content.jsp"> 
+							<a href="BoardAdd.bo?num=${vo.RESTO_NUMBER }"> 
 								<img src="images/${vo.RESTO_NUMBER }.jpg"
 								alt="첫번째 식당입니다">
 							</a>

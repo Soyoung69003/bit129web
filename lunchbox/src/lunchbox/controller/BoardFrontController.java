@@ -30,14 +30,18 @@ public class BoardFrontController extends HttpServlet implements Servlet {
 		ActionForward forward = null;
 		Action action = null;
 
-		if (command.equals("/BoardWrite.bo")) {
+		if (command.equals("/BoardDetail.bo")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("./board/board_write.jsp");
+			forward.setPath("./content.jsp");
 		} else if (command.equals("/BoardDelete.bo")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./board/board_delete.jsp");
+		} else if (command.equals("/BoardAdd.bo")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./write.jsp");
 		} else if (command.equals("/BoardModify.bo")) {
 			action = new BoardModifyView();
 			try {
@@ -49,7 +53,7 @@ public class BoardFrontController extends HttpServlet implements Servlet {
 			action = new BoardAddAction();
 			try {
 				forward = action.execute(request, response);
-			} catch (Exception e) {	
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/BoardModifyAction.bo")) {
@@ -88,7 +92,6 @@ public class BoardFrontController extends HttpServlet implements Servlet {
 				e.printStackTrace();
 			}
 		}
-
 
 		if (forward.isRedirect()) {
 			response.sendRedirect(forward.getPath());

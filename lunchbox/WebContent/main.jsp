@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@page import="lunchbox.model.member.MemberVO"%>
+<%@page import="lunchbox.model.member.MemberVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-		<c:set var="id" value="${id }"/>
+<c:set var="id" value="${ id }" />
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@
 								<li><a href="joinForm.jsp"> Sign up </a></li>
 							</ul></li>
 					</ul>
-				</div> 
+				</div>
 			</c:when>
 		</c:choose>
 
@@ -61,29 +61,32 @@
 		</c:choose>
 		<!-- soyoung 끝 -->
 	</nav>
-   <div class="container">
-      <div class="jumbotron">
-         <div class="container">
-            <p><h1>L U N C H B O X !</h1></p>
-            <br>
-            <br>
-            <p class="text-center">Average taste! Random menu!</p>
-            <p class="text-center">Create LUNCH BUS or Get on it!</p>
-			<div class="container" style="text-align: left; margin-top: 50px;" >
-                  <a class="btn btn-default btn-lg" href="RestoListAction.bo"
-                     role="button">Launch</a>
-					</div>
-			<div class="container" style="text-align: right; margin-top: 50px;" >
-			<c:if test="${empty id }">
-			<a class="btn btn-default btn-lg" href="./loginForm.jsp"
-                     role="button">게시판가기</a></c:if>
-             <c:if test="${not empty id }">
-                  <a class="btn btn-default btn-lg" href="./BoardListAction.bo"
-                     role="button">게시판가기</a></c:if>
-					</div>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<p>
+				<h1>L U N C H B O X !</h1>
+				</p>
+				<br> <br>
+				<p class="text-center">Average taste! Random menu!</p>
+				<p class="text-center">Create LUNCH BUS or Get on it!</p>
+				<div class="container" style="text-align: left; margin-top: 50px;">
+					<a class="btn btn-default btn-lg" href="RestoListAction.bo"
+						role="button">Launch</a>
+				</div>
+				<div class="container" style="text-align: right; margin-top: 50px;">
+					<c:if test="${empty id }">
+						<a class="btn btn-default btn-lg" href="./loginForm.jsp"
+							role="button">게시판가기</a>
+					</c:if>
+					<c:if test="${not empty id }">
+						<a class="btn btn-default btn-lg" href="./BoardListAction.bo"
+							role="button">게시판가기</a>
+					</c:if>
 				</div>
 			</div>
 		</div>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>

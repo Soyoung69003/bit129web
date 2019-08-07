@@ -54,7 +54,7 @@
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
          <div class="jumbotron" style="padding-top: 20px;">
-            <form method="post" action="./BoardListAction.bo">
+            <form method="post" action="./BoardAddAction.bo?num=${ param.num }">
                <h2 style="text-align: center;">Bus making</h2>
             
                <div class="form-group">
@@ -66,10 +66,13 @@
                <div class="form-group">
                  Main menu<input type="text" class="form-control" name="Mainmenu"readonly>
                </div>
+               <div class="form-group">
+                 Member number<input type="text" class="form-control" name="BOARD_MAXPRESENT">
+               </div>
                <div class="form-group" style="text-align: center;">
                </div>
                <div class="form-group">
-                  <textarea name="memo" cols="30" rows="8">
+                  <textarea name="BOARD_CONTENT" cols="30" rows="8">
                   </textarea>
                </div>
                <input type="submit" class="btn btn-primary form-control" value="submit"  onclick="return confirm('부릉부릉?')" >
