@@ -1,4 +1,4 @@
-﻿<%@page import="lunchbox.model.member.MemberVO"%>
+<%@page import="lunchbox.model.member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8 %>
 <%MemberVO member=(MemberVO)request.getAttribute("member"); %>
 <html>

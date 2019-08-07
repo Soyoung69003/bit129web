@@ -5,8 +5,8 @@
    type="javax.sql.DataSource"  
    driverClassName="oracle.jdbc.driver.OracleDriver" 
    url="jdbc:oracle:thin:@localhost:1521:xe"  
-   username="sangju" 
-   password="oracle"
+   username="sijeune" 
+   password="oracle" 
    maxActive="500"  
    maxIdle="100"/>   
 </Context>
