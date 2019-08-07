@@ -3,10 +3,9 @@ package lunchbox.model.resto;
 public class RestoVO {
 	private int RESTO_NUMBER;
 	private String RESTO_TITLE;
+	private String RESTO_MENU;
+	private int RESTO_PRICE;
 	private String RESTO_CONTENT;
-	private String RESTO_IMAGES_LINK;
-	private String RESTO_CATEGORY;
-	
 	public int getRESTO_NUMBER() {
 		return RESTO_NUMBER;
 	}
@@ -19,22 +18,24 @@ public class RestoVO {
 	public void setRESTO_TITLE(String rESTO_TITLE) {
 		RESTO_TITLE = rESTO_TITLE;
 	}
+	public String getRESTO_MENU() {
+		return RESTO_MENU;
+	}
+	public void setRESTO_MENU(String rESTO_MENU) {
+		RESTO_MENU = rESTO_MENU;
+	}
+	public int getRESTO_PRICE() {
+		return RESTO_PRICE;
+	}
+	public void setRESTO_PRICE(int rESTO_PRICE) {
+		RESTO_PRICE = rESTO_PRICE;
+	}
 	public String getRESTO_CONTENT() {
 		return RESTO_CONTENT;
 	}
 	public void setRESTO_CONTENT(String rESTO_CONTENT) {
 		RESTO_CONTENT = rESTO_CONTENT;
 	}
-	public String getRESTO_IMAGES_LINK() {
-		return RESTO_IMAGES_LINK;
-	}
-	public void setRESTO_IMAGES_LINK(String rESTO_IMAGES_LINK) {
-		RESTO_IMAGES_LINK = rESTO_IMAGES_LINK;
-	}
-	public String getRESTO_CATEGORY() {
-		return RESTO_CATEGORY;
-	}
-	public void setRESTO_CATEGORY(String rESTO_CATEGORY) {
-		RESTO_CATEGORY = rESTO_CATEGORY;
-	}
+
+	
 }

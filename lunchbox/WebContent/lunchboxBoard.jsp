@@ -21,13 +21,13 @@
          <button type="button" class="navbar-toggle collapsed"
             data-toggle=collapse data-taget="#bs-example-navbar-collapse-1"
             aria-expanded="false"></button>
-         <a class="navbar-brand" href="main.jsp"> 3 조 </a>
+         <a class="navbar-brand" href="main.jsp"> LUNCHBOX </a>
       </div>
       <div class="collapse navbar-collapse"
          id="bs-example-navbar-collapse-1">
          <ul class="nav navbar-nav">
-            <li><a href="main.jsp"> 3 조 메 인 </a>
-            <li class="active"><a href="BBS.jsp"> 게 시 판 </a></li>
+            <li><a href="main.jsp"> LUNCHBOX  </a>
+            <li class="active"><a href="./BoardListAction.bo"> 게 시 판 </a></li>
          </ul>
          <c:choose>
             <c:when test="${empty id }">
@@ -36,8 +36,8 @@
                      data-toggle="dropdown" role="button" aria-haspopup="true"
                      aria-expanded="false">접속하기<span class="caret"></span></a>
                      <ul class="dropdown-menu">
-                        <li><a href="login.jsp">로그인</a></li>
-                        <!-- <li><a href="join.jsp">회원가입</a></li> -->
+                        <li><a href="loginForm.jsp">로그인</a></li>
+                        <li><a href="joinForm.jsp">회원가입</a></li>
                      </ul></li>
                </ul>
             </c:when>
@@ -53,7 +53,6 @@
                </ul>
             </c:otherwise>
          </c:choose>
-
       </div>
    </nav>
    <div class="container">
@@ -80,8 +79,6 @@
                </c:forEach>
             </tbody>
          </table>
-
-
          <c:if test="${ page <= 1}">
             <div class="btn btn-primary">이전</div>
          </c:if>
@@ -89,7 +86,6 @@
             <a href="BoardListAction.bo?page=${ page - 1 }"
                class="btn btn-primary">이전</a>
          </c:if>
-
          <c:forEach var="i" begin="${ startpage }" end="${ endpage }">
             <c:choose>
                <c:when test="${ i == page }">
@@ -100,8 +96,6 @@
                </c:otherwise>
             </c:choose>
          </c:forEach>
-
-
          <c:if test="${ page >= maxpage }">
             <div class="btn btn-primary">다음</div>
          </c:if>
@@ -109,14 +103,16 @@
             <a href="BoardListAction.bo?page=${ page + 1 }"
                class="btn btn-primary">다음</a>
          </c:if>
-
-
-
+         
+         <c:if test="${empty id }">
+         <a href="loginForm.jsp" class="btn btn-primary pull-right">글쓰기</a>
+         </c:if>
+         <c:if test="${not empty id }">
          <a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+         </c:if>
       </div>
    </div>
    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
    <script src="js/bootstrap.js"></script>
-
 </body>
 </html>
