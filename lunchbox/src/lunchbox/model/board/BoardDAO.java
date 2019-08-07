@@ -11,20 +11,116 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class BoardDAO {
-	DataSource ds;
-	Connection con;
-	PreparedStatement pstmt;
-	ResultSet rs;
-
-	public BoardDAO() {
-		try {
-			Context init = new InitialContext();
-			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-
-		} catch (Exception ex) {
-			System.out.println("DB ì—°ê²° ì‹¤íŒ¨ : " + ex);
-			return;
+public class BoardDAO { 
+    Connection con; 
+    PreparedStatement pstmt; 
+    ResultSet rs; 
+     
+    public BoardDAO() { 
+        try{ 
+            Context init = new InitialContext(); 
+              DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB"); 
+              con = ds.getConnection(); 
+        }catch(Exception e){ 
+            System.out.println("DB ?°ê²° ?¤íŒ¨ : " + e); 
+            return; 
+        } 
+    } 
+     
+    //ê¸€?? ê°œìˆ˜ êµ¬í•˜ê¸?. 
+    public int getListCount() { 
+        int x= 0; 
+         
+        try{ 
+			pstmt = con.prepareStatement("SELECT COUNT(*) FROM LUNCHBOX_BOARD"); 
+            rs = pstmt.executeQuery(); 
+             
+            if(rs.next()){ 
+                x=rs.getInt(1); 
+            } 
+        }catch(Exception e){ 
+            System.out.println("getListCount ?ëŸ¬: " + e);             
+        }finally{ 
+            if(rs!=null) try{rs.close();}catch(SQLException e){} 
+            if(pstmt!=null) try{pstmt.close();}catch(SQLException e){} 
+        } 
+        return x; // êµ¬í•œ ê¸€?˜ë? ë¦¬í„´?œë‹¤. 
+    } 
+     
+    //ê¸€ ëª©ë¡ ë³´ê¸°.     
+    public List getBoardList(int page, int limit){ 
+        String board_list_sql=
+        		"SELECT ROWNUM, BOARD_NUM, BOARD_TITLE, BOARD_ID, BOARD_CONTENT, BOARD_PRESENT, MAXPRESENT, BOARD_DATE" +  
+                "FROM (SELECT * FROM LUNCHBOX_BOARD ORDER BY BOARD_NUM DESC)" 
+        		+ "WHERE ROWNUM>=0 AND ROWNUM<=10";
+        List list = new ArrayList(); 
+         
+        /*?œì‘?‰ì˜ ë²ˆí˜¸?€ ?í–‰?? ë²ˆí˜¸ë¥? ê³„ì‚°?œë‹¤. 
+         * ê³„ì‚°?? ê°’ìœ¼ë¡? ê°? ?˜ì´ì§€ ë§ˆë‹¤ ì¶œë ¥?? ?ˆì½”?œë? ?•í•œ??.*/ 
+        int startrow=(page-1)*10+1; //?½ê¸° ?œì‘?? row ë²ˆí˜¸. 
+        int endrow=startrow+limit-1; //?½ì„ ë§ˆì?ë§? row ë²ˆí˜¸.         
+        try{ 
+            pstmt = con.prepareStatement(board_list_sql); 
+            pstmt.setInt(1, startrow); 
+            pstmt.setInt(2, endrow); 
+            rs = pstmt.executeQuery(); //ê°€?¸ì˜¨ ?ˆì½”?? ê°’ì„ rs?? ?´ê³ .. ?´ì? ê°ì²´?¤ì„ ?˜ë‚˜?˜ë‚˜ ë¿Œë ¤ì¤€??. 
+             
+            while(rs.next()){ 
+                BoardVO board = new BoardVO(); 
+                board.setBOARD_NUM(rs.getInt("BOARD_NUM")); 
+                board.setBOARD_TITLE(rs.getString("BOARD_TITLE")); 
+                board.setBOARD_ID(rs.getString("BOARD_ID")); 
+                board.setBOARD_CONTENT(rs.getString("BOARD_CONTENT")); 
+                board.setBOARD_PRESENT(rs.getInt("BOARD_PRESENT")); 
+                board.setBOARD_PRESENT(rs.getInt("MAXPRESENT")); 
+                board.setBOARD_DATE(rs.getDate("BOARD_DATE")); 
+                list.add(board); 
+            }             
+            return list; 
+        }catch(Exception e){ 
+            System.out.println("getBoardList ?ëŸ¬ : " + e); 
+        }finally{ 
+            if(rs!=null) try{rs.close();}catch(SQLException e){} 
+            if(pstmt!=null) try{pstmt.close();}catch(SQLException e){} 
+        } 
+        return null; 
+    } 
+     
+    //ê¸€ ?´ìš© ë³´ê¸°. 
+    public BoardVO getDetail(int num) throws Exception{ 
+        BoardVO board = null; 
+        try{ 
+            pstmt = con.prepareStatement("SELECT * FROM LUNCHBOX_BOARD WHERE BOARD_NUM=?"); //?¸ìˆ˜ë¡? ?˜ê²¨ì¤€ ë²ˆí˜¸?? ?´ë‹¹?˜ëŠ” ê¸€?? ?»ì–´?¨ë‹¤. 
+            pstmt.setInt(1, num); 
+            rs= pstmt.executeQuery(); 
+             
+            /*ë°›ì•„?? ?ˆì½”?? ê°’ì„ ë¹ˆê°ì²´ì— ? ë‹¹. ë¦¬í„´?? ê°ì²´?? view?˜ì´ì§€?ì„œ ê°ê° ì¶œë ¥?œë‹¤.*/ 
+            if(rs.next()){ 
+                board = new BoardVO(); 
+                board.setBOARD_NUM(rs.getInt("BOARD_NUM")); 
+                board.setBOARD_TITLE(rs.getString("BOARD_TITLE")); 
+                board.setBOARD_ID(rs.getString("BOARD_ID")); 
+                board.setBOARD_CONTENT(rs.getString("BOARD_CONTENT")); 
+                board.setBOARD_PRESENT(rs.getInt("BOARD_PRESENT")); 
+                board.setBOARD_PRESENT(rs.getInt("MAXPRESENT")); 
+                board.setBOARD_DATE(rs.getDate("BOARD_DATE")); 
+            } 
+            return board; 
+        }catch(Exception e){ 
+            System.out.println("getDetail ?ëŸ¬ : " + e); 
+        }finally{ 
+            if(rs!=null)try{rs.close();}catch(SQLException e){} 
+            if(pstmt !=null)try{pstmt.close();}catch(SQLException e){} 
+        } 
+        return null; 
+    } 
+     
+    //ê¸€ ?±ë¡. 
+    public boolean boardInsert(BoardVO board){ 
+        int num =0; 
+        String sql="";         
+        int result=0; 
+         
 		}
 
 	}
@@ -36,13 +132,13 @@ public class BoardDAO {
 
 			con = ds.getConnection();
 			pstmt = con.prepareStatement("select count(*) from lunchbox_board");
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
 				x = rs.getInt(1);
+				num = rs.getInt(1) + 1; // ?? ê¸€?? ë²ˆí˜¸ = [ë§ˆì?ë§? ê¸€ë²ˆí˜¸ + 1]
+			} else {
+				num = 1;
 			}
 		} catch (Exception ex) {
-			System.out.println("getListCount ì—ëŸ¬: " + ex);
+			System.out.println("getListCount ?ëŸ¬: " + ex);
 		} finally {
 			if (rs != null)
 				try {
@@ -69,8 +165,8 @@ public class BoardDAO {
 
 		List<BoardVO> list = new ArrayList<BoardVO>();
 
-		int startrow = (page - 1) * 10 + 1; // ì½ê¸° ì‹œì‘í•  row ë²ˆí˜¸.
-		int endrow = startrow + limit - 1; // ì½ì„ ë§ˆì§€ë§‰ row ë²ˆí˜¸.
+		int startrow = (page - 1) * 10 + 1; // ?½ê¸° ?œì‘?? row ë²ˆí˜¸.
+		int endrow = startrow + limit - 1; // ?½ì„ ë§ˆì?ë§? row ë²ˆí˜¸.
 
 		try {
 			con = ds.getConnection();
@@ -92,7 +188,7 @@ public class BoardDAO {
 
 			return list;
 		} catch (Exception ex) {
-			System.out.println("getBoardList ì—ëŸ¬ : " + ex);
+			System.out.println("getBoardList ?ëŸ¬ : " + ex);
 		} finally {
 			if (rs != null)
 				try {
@@ -175,14 +271,23 @@ public class BoardDAO {
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(SQL);
+			sql = "INSERT INTO LUNCHBOX_BOARD "
+					+ "(BOARD_NUM, BOARD_TITLE, BOARD_ID, BOARD_CONTENT, BOARD_PRESENT, MAXPRESENT, BOARD_DATE) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, sysdate)";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
+			pstmt.setString(2, board.getBOARD_TITLE());
+			pstmt.setString(3, board.getBOARD_ID());
+			pstmt.setString(4, board.getBOARD_CONTENT());
+			pstmt.setInt(5, board.getBOARD_PRESENT());
+			pstmt.setInt(6, board.getMAXPRESENT());
 			result = pstmt.executeUpdate();
 			if (result == 0)
 				return false;
 
 			return true;
 		} catch (Exception ex) {
-			System.out.println("boardDelete ì—ëŸ¬ : " + ex);
+			System.out.println("boardDelete ?ëŸ¬ : " + ex);
 		} finally {
 			try {
 				if (pstmt != null)
@@ -190,6 +295,8 @@ public class BoardDAO {
 				if (con != null)
 					con.close();
 			} catch (Exception ex) {
+			if (result != 0) {
+				return true;
 			}
 
 		}
@@ -218,49 +325,48 @@ public class BoardDAO {
 			}
 			return boardvo;
 		} catch (Exception ex) {
-			System.out.println("getDetail ì—ëŸ¬ : " + ex);
+			System.out.println("getDetail ?ëŸ¬ : " + ex);
+		} catch (Exception e) {
+			System.out.println("boardInsert ?ëŸ¬ : " + e);
 		} finally {
 			if (rs != null)
 				try {
 					rs.close();
-				} catch (SQLException ex) {
+				} catch (SQLException e) {
 				}
 			if (pstmt != null)
 				try {
 					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			if (con != null)
-				try {
-					con.close();
-				} catch (SQLException ex) {
+				} catch (SQLException e) {
 				}
 		}
-		return null;
+		return false;
 	}
-
-	public boolean modifyBoard(BoardVO boardvo) {
-		String sql = "update lunchbox_board set BOARD_CONTENT=? where BOARD_NUM=?";
-
+    
+    //ê¸€ ?˜ì • - ê¸€ ?œëª©ê³? ?´ìš©, ìµœë??¸ì›?˜ìš©ë§? ?˜ì • ê°€?? 
+    public boolean boardModify(BoardVO modifyboard) throws Exception{ 
+        String sql="UPDATE LUNCHBOX_BOARD SET BOARD_TITLE=?, BOARD_CONTENT=? WHERE BOARD_NUM=?"; 
+         
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, boardvo.getBOARD_CONTENT());
-			pstmt.setInt(1, boardvo.getBOARD_NUM());
+			pstmt.setString(1, modifyboard.getBOARD_TITLE());
+			pstmt.setString(2, modifyboard.getBOARD_CONTENT());
+			pstmt.setInt(3, modifyboard.getMAXPRESENT());
 			pstmt.executeUpdate();
 			return true;
-		} catch (Exception ex) {
-			System.out.println("boardModify ì—ëŸ¬ : " + ex);
+		} catch (Exception e) {
+			System.out.println("boardModify ?ëŸ¬ : " + e);
 		} finally {
 			if (rs != null)
 				try {
 					rs.close();
-				} catch (SQLException ex) {
+				} catch (SQLException e) {
 				}
 			if (pstmt != null)
 				try {
 					pstmt.close();
-				} catch (SQLException ex) {
+				} catch (SQLException e) {
 				}
 			if (con != null)
 				try {
@@ -270,5 +376,44 @@ public class BoardDAO {
 		}
 		return false;
 	}
+     
+    /*ê¸€ ?? œ. 
+     * ?¡ì…˜ ?´ë˜?¤ì—?? ë¹„ë?ë²ˆí˜¸ ?¼ì¹˜?¬ë?ë¥? ?•ì¸?? ?? ê¸€ ?? œë¥? ì§„í–‰?œë‹¤.*/ 
+    public boolean boardDelete(int num){ 
+        String sql="DELETE FROM LUNCHBOX_BOARD WHERE BOARD_NUM=?";         
+        int result=0;         
+        try{ 
+            pstmt=con.prepareStatement(sql); 
+            pstmt.setInt(1, num); 
+            result=pstmt.executeUpdate(); 
+            if(result==0)return false;             
+            return true; 
+        }catch(Exception e){ 
+            System.out.println("boardDelete ?ëŸ¬ : "+e); 
+        }finally{ 
+            try{ 
+                if(pstmt!=null)pstmt.close(); 
+            }catch(Exception e) {} 
+        }         
+        return false; 
+    } 
 
+    //?? ê¸€ë§? ?? œ ê°€?¥í•˜ê²? ë§Œë“œ?? ë©”ì†Œ?? - ë¯¸ì™„??........ ?´ë–»ê²? ?˜ì???
+//    public boolean isBoardWriter(int num, String pass) { 
+//        String board_sql="SELECT * FROM BOARD WHERE BOARD_NUM=?"; 
+//         
+//        try{ 
+//            pstmt=con.prepareStatement(board_sql); 
+//            pstmt.setInt(1, num); 
+//            rs=pstmt.executeQuery(); 
+//            rs.next(); 
+//             
+//            if(pass.equals(rs.getString("BOARD_PASS"))){ 
+//                return true; 
+//            } 
+//        }catch(SQLException e){ 
+//            System.out.println("isBoardWriter ?ëŸ¬ : "+e); 
+//        } 
+//        return false; 
+//    } 
 }

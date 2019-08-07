@@ -25,13 +25,13 @@ public class MemberFrontController extends HttpServlet implements Servlet{
         ActionForward forward = null; 
         Action action = null; 
         
-        //로그인화면 요청이 들어오면
+        //로그?�화�? ?�청?? ?�어?�면
         if(command.equals("/MemberLogin.me")){ 
             forward=new ActionForward(); 
             forward.setRedirect(false); 
             forward.setPath("./loginForm.jsp"); 
             
-        //로그인 시도가 들어오면
+        //로그?? ?�도가 ?�어?�면
         }else if(command.equals("/MemberLoginAction.me")){ 
             action=new MemberLoginAction(); 
             try { 
@@ -40,15 +40,14 @@ public class MemberFrontController extends HttpServlet implements Servlet{
                 e.printStackTrace(); 
             } 
             
-         //회원가입화면 요청이 들어오면
+         //?�원가?�화�? ?�청?? ?�어?�면
         }else if(command.equals("/MemberJoin.me")){ 
             forward = new ActionForward(); 
             forward.setRedirect(false); 
             forward.setPath("./joinForm.jsp"); 
             
-            //회원가입 버튼을 누르면
+         //?�보 ?�력 ?? ?�원가?? 버튼?? ?�르�?
         }else if(command.equals("/MemberJoinAction.me")){ 
-        	System.out.println("회원가입 시도");
             action=new MemberJoinAction(); 
             try { 
                 forward=action.execute(request, response); 
@@ -56,7 +55,7 @@ public class MemberFrontController extends HttpServlet implements Servlet{
                 e.printStackTrace(); 
             }
 
-			// 회원목록 조회 버튼을 누르면 
+			// ?�원목록 조회 버튼?? ?�르�? 
             }else if(command.equals("/MemberListAction.me")){
 			action = new MemberListAction();
 			try {
@@ -64,16 +63,15 @@ public class MemberFrontController extends HttpServlet implements Servlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			 
             
-            //해당회원 정보 보기를 누르면
+            //?�당?�원 ?�보 보기�? ?�르�?
 			/*
 			 * }else if(command.equals("/MemberViewAction.me")){ action=new
 			 * MemberViewAction(); try { forward=action.execute(request, response); } catch
 			 * (Exception e) { e.printStackTrace(); }
 			 */
         
-		//회원삭제 요청이 들어오면
+		//?�원??�� ?�청?? ?�어?�면
         }else if(command.equals("/MemberDeleteAction.me")) { 
             action=new MemberDeleteAction(); 
             try { 
@@ -82,7 +80,6 @@ public class MemberFrontController extends HttpServlet implements Servlet{
                 e.printStackTrace(); 
             } 
         } //if end
-        
         
         if(forward!=null){ 
             if(forward.isRedirect()){ 

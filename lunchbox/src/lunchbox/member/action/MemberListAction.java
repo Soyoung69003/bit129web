@@ -30,7 +30,7 @@ public class MemberListAction implements Action{
             response.setContentType("text/html;charset=utf-8"); 
             PrintWriter out = response.getWriter(); 
             out.println("<script>"); 
-            out.println("alert('권한이 없습니다.')"); 
+            out.println("alert('권한?? ?�습?�다.')"); 
             out.println("location.href='./BoardList.bo'"); 
             out.println("</script>"); 
             out.close(); 
@@ -39,7 +39,7 @@ public class MemberListAction implements Action{
 
         memberlist=memberdao.getMemberList();  
         if(memberlist==null){
-            System.out.println("회원 목록 읽기 실패");             
+            System.out.println("?�원 목록 ?�기 ?�패");             
             return null; 
         } 
         request.setAttribute("memberlist", memberlist); 

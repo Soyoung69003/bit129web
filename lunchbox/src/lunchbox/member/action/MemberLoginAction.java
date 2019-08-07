@@ -20,40 +20,41 @@ public class MemberLoginAction implements Action {
         MemberDAO memberdao = new MemberDAO(); 
         MemberVO member = new MemberVO(); 
          
-        int result=-1; // 없는 아이디
+        int result=-1; // ?�는 ?�이??
         
-        //로그인폼에서 입력한 값을 MemberVO객체에 저장 
+        //로그?�폼?�서 ?�력?? 값을 MemberVO객체?? ?�?? 
         member.setMEMBER_ID(request.getParameter("MEMBER_ID")); 
         member.setMEMBER_PWD(request.getParameter("MEMBER_PWD")); 
         result=memberdao.isMember(member);
          
-        //로그인 실패
-        if(result==0){ //비밀번호 불일치
+        //로그?? ?�패
+        if(result==0){ //비�?번호 불일�?
             response.setContentType("text/html;charset=utf-8"); 
             PrintWriter out = response.getWriter(); 
             out.println("<script>"); 
-            out.println("alert('비밀번호를 확인해주세요');"); 
+            out.println("alert('비�?번호�? ?�인?�주?�요');"); 
             out.println("location.href='./MemberLogin.me';"); 
             out.println("</script>"); 
             out.close(); 
             return null; 
-        }else if(result==-1){ //아이디 없음
+        }else if(result==-1){ //?�이?? ?�음
             response.setContentType("text/html;charset=utf-8"); 
             PrintWriter out = response.getWriter(); 
             out.println("<script>"); 
-            out.println("alert('아이디가 존재하지 않습니다.');"); 
+            out.println("alert('?�이?��? 존재?��? ?�습?�다.');"); 
             out.println("location.href='./MemberLogin.me';"); 
             out.println("</script>"); 
             out.close(); 
             return null; 
         }         
          
-        //로그인 성공
+        //로그?? ?�공
         session.setAttribute("id", member.getMEMBER_ID());
-        System.out.println("세션 바인딩 완료");
-        forward.setRedirect(true);//접속 reset
-//        forward.setPath("./BoardList.do");//원래 일루 가야 되는데
-        forward.setPath("boardList.jsp");//임시테스트용
+        System.out.println("?�션 바인?? ?�료");
+        forward.setRedirect(true);//?�속 reset
+//        forward.setPath("./BoardList.do");//?�래 ?�루 가?? ?�는??
+//        forward.setPath("boardList.jsp");//?�시?�스?�용
+        forward.setPath("main.jsp");
         return forward; 
     } 
 }

@@ -5,11 +5,11 @@
 	List memberlist=(List)request.getAttribute("memberlist");
 %>
 <html>
-<head><title>회원관리 시스템 관리자모드(회원 목록 보기)</title></head>
+<head><title>?�원관�? ?�스?? 관리자모드(?�원 목록 보기)</title></head>
 <body>
 
 <table align="center" border=1 width=300>
-	<tr align=center><td colspan=4>회원목록</td></tr>
+	<tr align=center><td colspan=4>?�원목록</td></tr>
 	<%
 	for(int i=0 ; i<memberlist.size() ; i++){ 
 		MemberVO member=(MemberVO)memberlist.get(i);
@@ -22,12 +22,12 @@
 		<td><a href="MemberViewAction.me?id=<%=member.getMEMBER_EMAIL() %>">
 					<%=member.getMEMBER_EMAIL() %></a></td>
 		<td><a href="MemberDeleteAction.me?id=<%=member.getMEMBER_ID() %>">
-				삭제</a></td>		
+				??��</a></td>		
 	</tr>
 	<%} %>
 	
 	<tr align = center>
-		<td colspan="4"> <!-- <a href="./BoardList.bo"> --><a href="#">[게시판 이동]</a> </td>
+		<td colspan="4"> <!-- <a href="./BoardList.bo"> --><a href="#">[게시?? ?�동]</a> </td>
 	</tr>
 </table>
 </body>
