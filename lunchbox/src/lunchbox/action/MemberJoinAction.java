@@ -7,10 +7,9 @@ import lunchbox.model.member.MemberDAO;
 import lunchbox.model.member.MemberVO;
 
 public class MemberJoinAction implements Action{ 
-   @Override
+	@Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception { 
-       System.out.println("test"); 
-	   request.setCharacterEncoding("utf-8"); //한글처리 
+        request.setCharacterEncoding("utf-8"); //한글처리 
         ActionForward forward = new ActionForward(); 
         MemberDAO memberdao = new MemberDAO(); 
         MemberVO member = new MemberVO(); 
@@ -31,7 +30,7 @@ public class MemberJoinAction implements Action{
         //회원가입 성공 
         forward.setRedirect(true); 
         System.out.println("회원가입 성공!");
-        forward.setPath("./main.jsp");         
+        forward.setPath("./MemberLogin.me");         
         return forward; 
     } 
 }

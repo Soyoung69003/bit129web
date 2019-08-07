@@ -12,13 +12,11 @@
 </head>
 <body>
 	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
-	<%
-		// 여기서는 세션에 userid값이 존재하면 불러온다
-		String userID = null;
-		if (session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
-		}
-	%>
+	<c:choose>
+   <c:when test='${session.id!=null }'>
+      <c:set var="id" value="${session.id }"/>
+   </c:when>
+</c:choose>
 
 
 	<nav class="navbar navbar-default">
@@ -32,7 +30,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="choose.jsp"> Choose </a></li>
+				<li><a href="main.jsp"> Main </a></li>
 				<li class="active"><a href="result.jsp"> Result </a></li>
 				<li><a href="list.jsp"> list </a></li>
 
@@ -73,7 +71,7 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="item active">
-							<a href="content.jsp"> <img src="images/1.jpg"
+							<a href="content.jsp"> <img src="images/${ 1 }.jpg"
 								alt="첫번째 식당입니다">
 							</a>
 							<div class="carousel-caption">
@@ -83,7 +81,7 @@
 						</div>
 						<div class="item">
 						<a href="content.jsp">
-							<img src="images/2.jpg" alt="두번째 식당입니다">
+							<img src="images/${ 2 }.jpg" alt="두번째 식당입니다">
 							</a>
 							<div class="carousel-caption">
 								<h3>여기는 평범한집입니다</h3>
@@ -92,7 +90,7 @@
 						</div>
 						<div class="item">
 						<a href="content.jsp">
-							<img src="images/3.jpg" alt="두번째 식당입니다">
+							<img src="images/${ 3 }.jpg" alt="두번째 식당입니다">
 							</a>
 							<div class="carousel-caption">
 								<h3>여기는 평범한집입니다</h3>
@@ -101,7 +99,7 @@
 						</div>
 						<div class="item">
 						<a href="content.jsp">
-							<img src="images/4.jpg" alt="두번째 식당입니다">
+							<img src="images/${ 4 }.jpg" alt="두번째 식당입니다">
 							</a>
 							<div class="carousel-caption">
 								<h3>여기는 평범한집입니다</h3>

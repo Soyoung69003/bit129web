@@ -7,11 +7,10 @@
 <meta http-equiv="Content=Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
-<title>회원가입 페이지</title>
-</head>
+<html>
+<head><title>회원가입 페이지</title></head>
 <body>
-
-	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
+<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
 	<%-- <% // 여기서는 세션에 userid값이 존재하면 불러온다
 		String userID = null;
 		if(session.getAttribute("userID") != null){
@@ -19,8 +18,7 @@
 		}
 	
 	%> --%>
-
-	<nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
 		<div class="navbar-hearder">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-taget="#bs-example-navbar-collapse-1"
@@ -75,10 +73,6 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-
 
 </body>
 </html>

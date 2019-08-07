@@ -55,15 +55,16 @@
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
          <div class="jumbotron" style="margin: 100px 25px 15px 0px">
-            <form method="post" action="joinAction.jsp">
+            <form method="post" action=./MemberLoginAction.me">
                <h3 style="text-align: center;">Sign in</h3>
                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="userID" >
+                  <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="MEMBER_ID" >
                </div>
                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="userPassword" >
+                  <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="MEMBER_PWD" >
                </div>
-               <input type="submit" class="btn btn-primary form-control" value="Sign in" onclick="location.href = 'javascript:jsFunction();'"/>
+               <input type="submit" class="btn btn-primary form-control" value="Sign in" 
+               onclick="location.href ='javascript:loginform.submit();'"/>
             </form>
          </div>
       </div>
