@@ -1,19 +1,8 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
 	<Resource name="jdbc/OracleDB" auth="Container"
-		type="javax.sql.DataSource" username="sangju" password="oracle"
+		type="javax.sql.DataSource"
 		driverClassName="oracle.jdbc.driver.OracleDriver"
-		url="jdbc:oracle:thin:@localhost:1521:xe" />
-
+		url="jdbc:oracle:thin:@localhost:1521:xe" username="sangju"
+		password="oracle" maxActive="500" maxIdle="100" />
 </Context>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<Context>
-	<Resource name="jdbc/OracleDB" auth="Container"
-		type="javax.sql.DataSource" username="sangju" password="oracle"
-		driverClassName="oracle.jdbc.driver.OracleDriver"
-		url="jdbc:oracle:thin:@localhost:1521:xe" />
-
-</Context>
->>>>>>> refs/remotes/origin/soyoung

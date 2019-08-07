@@ -8,6 +8,7 @@ public class BoardVO {
 	private String BOARD_ID;
 	private String BOARD_CONTENT;
 	private int BOARD_PRESENT;
+	private int BOARD_MAXPRESENT;
 	private Date BOARD_DATE;
 	
 	public int getBOARD_NUM() {
@@ -15,6 +16,12 @@ public class BoardVO {
 	}
 	public void setBOARD_NUM(int bOARD_NUM) {
 		BOARD_NUM = bOARD_NUM;
+	}
+	public int getBOARD_MAXPRESENT() {
+		return BOARD_MAXPRESENT;
+	}
+	public void setBOARD_MAXPRESENT(int bOARD_MAXPRESENT) {
+		BOARD_MAXPRESENT = bOARD_MAXPRESENT;
 	}
 	public String getBOARD_TITLE() {
 		return BOARD_TITLE;
