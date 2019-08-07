@@ -12,13 +12,23 @@
 </head>
 <body>
 <!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
-	<% // 여기서는 세션에 userid값이 존재하면 불러온다
+	<%-- <% // 여기서는 세션에 userid값이 존재하면 불러온다
 		String userID = null;
 		if(session.getAttribute("userID") != null){
 			userID = (String) session.getAttribute("userID");
 		}
 	
-	%>
+	%> --%>
+	   <!-- soyoung 시작 -->
+<c:choose>
+   <c:when test='${session.id!=null }'>
+      <c:set var="id" value="${session.id }"/>
+   </c:when>
+</c:choose>
+   <!-- soyoung 끝 -->
+	
+	
+	
 	
 	
 	<nav class="navbar navbar-default">
@@ -59,21 +69,21 @@
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
          <div class="jumbotron" style="padding-top: 20px;">
-            <form method="post" action="joinAction.jsp">
-               <h3 style="text-align: center;">회원가입</h3>
+            <form method="post" action="./MemberJoinAction.do">
+               <h3 style="text-align: center;">Sign up</h3>
                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="userID" minlength="6" maxlength="20">
+                  <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="MEMBER_ID">
                </div>
                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="userPassword" minlength="6" maxlength="20">
+                  <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="MEMBER_PWD" >
                </div>
                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="이름을 입력하세요" name="userName" maxlength="20">
+                  <input type="text" class="form-control" placeholder="이름을 입력하세요" name="MEMBER_NAME" >
                </div>
                <div class="form-group">
-                  <input type="email" class="form-control" placeholder="이메일을 입력하세요" name="userEmail" maxlength="20">
+                  <input type="email" class="form-control" placeholder="이메일을 입력하세요" name="MEMBER_EMAIL" maxlength="20">
                </div>
-               <input type="submit" class="btn btn-primary form-control" value="회원가입">
+               <input type="submit" class="btn btn-primary form-control" value="Sign up" >
             
             </form>
       
