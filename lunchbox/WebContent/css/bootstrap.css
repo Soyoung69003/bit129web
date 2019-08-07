@@ -10,6 +10,12 @@ html
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+
+h3{
+	font-color: white;
+	
+}
+
 body {
   margin: 0;
 }
@@ -3333,6 +3339,13 @@ fieldset[disabled] .btn-link:focus {
   line-height: 1.3333333;
   border-radius: 6px;
 }
+.btn-lx,
+.btn-group-lx > .btn {
+  padding: 20px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
 .btn-sm,
 .btn-group-sm > .btn {
   padding: 5px 10px;
@@ -3753,6 +3766,7 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
+ 
 }
 select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
@@ -4842,11 +4856,27 @@ a.badge:focus {
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
-.jumbotron {
+/* .jambotron {
   padding: 30px 15px;
   margin-bottom: 30px;
   color: inherit;
+  background-color: black; 
+  
+}
+.junbotron {
+  padding: 30px 15px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color:  #FFCE55;#ff7f00 #fa05ea *//* #FFCE55 *//* #ff0005
+  
+} */
+
+.jumbotron {
+  padding: -100px -100px;
+  margin-bottom: 30px;
+  color: inherit;
   background-color: #eee;
+  padding: -100px,-100px,-100px,-100px;
   
 }
 .jumbotron h1,
@@ -4861,6 +4891,7 @@ a.badge:focus {
 .jumbotron > hr {
   border-top-color: #d5d5d5;
 }
+
 .container .jumbotron,
 .container-fluid .jumbotron {
   border-radius: 6px;

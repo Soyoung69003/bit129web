@@ -6,20 +6,11 @@
 <meta http-equiv="Content=Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
+<c:set var="id" value="${id}"/>
 
 <title> 랜 덤 박 스 ! </title>
 </head>
 <body>
-   <!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
-  <!--  여기서는 세션에 userid값이 존재하면 불러온다 -->
-  
-   <!-- soyoung 시작 -->
-<c:choose>
-	<c:when test="${session.id!=null }">
-		<c:set var="id" value="${session.id }"/>
-	</c:when>
-</c:choose>
-   <!-- soyoung 끝 -->
    <nav class="navbar navbar-default">
       <div class="navbar-hearder">
          <button type="button" class="navbar-toggle collapsed"
@@ -28,11 +19,10 @@
             </button>
             <a class="navbar-brand" href="main.jsp"> LUNCH BOX </a>
       </div>
-
-         <!-- 여기는 if로 id 값이 있으면 발동하게 한다 -->
+         <!-- 여기는 if로 id 값이 없으면 발동하게 한다 -->
          <!-- soyoung 시작 -->
 <c:choose>
-	<c:when test="${session.id!=null }">
+	<c:when test="${empty id }">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -40,17 +30,19 @@
                   data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false"> Connect <span class="caret"></span></a>
                <ul class="dropdown-menu">
-                  <li><a href="login.jsp"> Sign in </a></li>
-                  <li><a href="join.jsp"> Sign up </a></li>
+                  <li><a href="loginForm.jsp"> Sign in </a></li>
+                  <li><a href="joinForm.jsp"> Sign up </a></li>
                </ul>
             </li>
          </ul>
          </div>
-</c:when>
-</c:choose>   
-<!-- soyoung 끝 -->
+    </c:when>
+</c:choose>  
    </nav>
-   
+<!-- soyoung 끝 -->  
+         <!-- soyoung 시작 -->
+<c:choose>
+	<c:when test="${empty id }">
    <div class="container">
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
@@ -68,7 +60,12 @@
          </div>
       </div>
    </div>
-   
+       </c:when>
+		<c:otherwise>
+			<c:redirect url = "/main.jsp" context = "/lunchbox/"/>
+		</c:otherwise>
+	</c:choose>  
+<!-- soyoung 끝 -->  
    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
    <script src="js/bootstrap.js"></script>
 </body>

@@ -17,7 +17,7 @@ public class MemberJoinAction implements Action{
          
         /*입력 정보를 memberVO객체에 저장*/ 
         member.setMEMBER_ID(request.getParameter("MEMBER_ID")); 
-        member.setMEMBER_PWD(request.getParameter("MEMBER_PW")); 
+        member.setMEMBER_PWD(request.getParameter("MEMBER_PWD")); 
         member.setMEMBER_NAME(request.getParameter("MEMBER_NAME")); 
         member.setMEMBER_EMAIL(request.getParameter("MEMBER_EMAIL")); 
         result=memberdao.joinMember(member); // dao에 joinmember메서드를 실행해서 회원가입처리         

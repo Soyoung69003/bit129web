@@ -15,6 +15,7 @@ import lunchbox.action.MemberDeleteAction;
 import lunchbox.action.MemberJoinAction;
 import lunchbox.action.MemberListAction;
 import lunchbox.action.MemberLoginAction;
+import lunchbox.action.MemberLogoutAction;
 
 public class MemberFrontController extends HttpServlet implements Servlet{ 
     static final long serialVersionUID=1L; 
@@ -30,7 +31,6 @@ public class MemberFrontController extends HttpServlet implements Servlet{
             forward=new ActionForward(); 
             forward.setRedirect(false); 
             forward.setPath("./loginForm.jsp"); 
-            
         //로그인 시도가 들어오면
         }else if(command.equals("/MemberLoginAction.me")){ 
             action=new MemberLoginAction(); 
@@ -39,6 +39,15 @@ public class MemberFrontController extends HttpServlet implements Servlet{
             } catch (Exception e) { 
                 e.printStackTrace(); 
             } 
+         
+          //로그아웃 시도가 들어오면
+        }else if(command.equals("/MemberLogoutAction.me")){ 
+            action=new MemberLogoutAction(); 
+            try { 
+                forward=action.execute(request, response); 
+            } catch (Exception e) { 
+                e.printStackTrace(); 
+            }   
             
          //회원가입화면 요청이 들어오면
         }else if(command.equals("/MemberJoin.me")){ 
@@ -83,10 +92,10 @@ public class MemberFrontController extends HttpServlet implements Servlet{
         
         if(forward!=null){ 
             if(forward.isRedirect()){ 
-                response.sendRedirect(forward.getPath()); 
+            	response.sendRedirect(forward.getPath()); 
             }else{ 
-                RequestDispatcher dispatcher=request.getRequestDispatcher(forward.getPath()); 
-                dispatcher.forward(request, response); 
+            	RequestDispatcher dispatcher=request.getRequestDispatcher(forward.getPath()); 
+                dispatcher.forward(request, response);
             } 
         }         
     } 
