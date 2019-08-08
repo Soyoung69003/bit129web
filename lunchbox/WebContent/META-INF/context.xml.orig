@@ -1,16 +1,22 @@
+<<<<<<< HEAD
+﻿<?xml version="1.0" encoding="UTF-8"?>
+=======
 <?xml version="1.0" encoding="UTF-8"?>
+>>>>>>> origin/TaeSung
 <Context>  
   <Resource name="jdbc/OracleDB" 
    auth="Container" 
    type="javax.sql.DataSource"  
    driverClassName="oracle.jdbc.driver.OracleDriver" 
    url="jdbc:oracle:thin:@localhost:1521:xe"  
+<<<<<<< HEAD
    username="sangju" 
    password="oracle" 
-<<<<<<< HEAD
    />   
 =======
-   maxTotal="50"  
+   username="magic" 
+   password="oracle" 
+   maxActive="500"  
    maxIdle="100"/>   
->>>>>>> origin/soyoung
+>>>>>>> origin/TaeSung
 </Context>

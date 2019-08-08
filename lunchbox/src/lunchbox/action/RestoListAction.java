@@ -1,4 +1,4 @@
-package lunchbox.action;
+﻿package lunchbox.action;
 
 import java.util.ArrayList;
 
@@ -15,8 +15,12 @@ public class RestoListAction implements Action {
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		RestoDAO restodao = new RestoDAO();
-		ArrayList list = new ArrayList();
-		list=restodao.getList();
+		RestoVO restovo = new RestoVO();
+		ArrayList<RestoVO> list = restodao.getList();
+		
+		
+			
+		
 
 		String id = (String) session.getAttribute("id");
 		if (id == null) {
@@ -24,7 +28,14 @@ public class RestoListAction implements Action {
 			forward.setPath("./MemberLogin.me");
 			return forward;
 		} else {
-			request.setAttribute("restolist", list);
+			for(int i=0; i<list.size(); i++) {
+				
+				request.setAttribute("NUMBER"+i, list.get(i).getRESTO_NUMBER());
+				request.setAttribute("TITLE"+i, list.get(i).getRESTO_TITLE());
+				request.setAttribute("CONTENT"+i, list.get(i).getRESTO_CONTENT());
+				request.setAttribute("PRICE"+i, list.get(i).getRESTO_PRICE());
+				request.setAttribute("MENU"+i, list.get(i).getRESTO_MENU());
+			}
 			System.out.println("랜덤바인딩완료");
 			forward.setRedirect(false);
 			forward.setPath("./result.jsp");
