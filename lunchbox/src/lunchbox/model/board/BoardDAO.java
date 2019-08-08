@@ -1,4 +1,4 @@
-package lunchbox.model.board;
+﻿package lunchbox.model.board;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

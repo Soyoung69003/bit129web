@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -18,21 +18,18 @@
 <body>
 	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
 	
-	
-	
 	<nav class="navbar navbar-default">
 		<div class="navbar-hearder">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-taget="#bs-example-navbar-collapse-1"
 				aria-expanded="false">
 				</button>
-				<a class="navbar-brand" href="main.jsp"> LUNCH BOX </a>
+				<a class="navbar-brand" href="main.jsp"> LUNCHBOX</a>
 		</div>
 		
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="Choose.jsp"> Choose </a></li>
-					<li><a href="random.jsp"> All random </a></li>
+					<li><a href="random.jsp"> Launch </a></li>
 					<li><a href="result.jsp"> Result </a></li>
 					<li class = "active"><a href="write.jsp"> Bus making </a></li>
 					

@@ -1,20 +1,25 @@
 package lunchbox.model.member;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 public class MemberDAO { 
     Connection con; 
     PreparedStatement pstmt; 
-    ResultSet rs; 
+    ResultSet rs;
+    HttpServletResponse response;
      
     public MemberDAO() { 
         try{
@@ -58,7 +63,7 @@ public class MemberDAO {
     } 
      
     //회원 가입 메소드
-    public boolean joinMember(MemberVO member) { 
+    public boolean joinMember(MemberVO member) throws SQLException, IOException { 
         String sql="INSERT INTO LUNCHBOX_MEMBER VALUES (?,?,?,?)"; 
         int result=0; 
          
@@ -73,9 +78,11 @@ public class MemberDAO {
             if(result!=0){ 
                 return true; 
             } 
-        }catch(Exception e){ 
-            System.out.println("joinMember 에러: " + e);             
-        }finally{ 
+        } 
+        catch(Exception e) {
+        	System.out.println("joinMember 에러: " + e);             
+        }
+        finally{ 
             if(rs!=null) try{rs.close();}catch(SQLException e){} 
             if(pstmt!=null) try{pstmt.close();}catch(SQLException e){} 
         } 
