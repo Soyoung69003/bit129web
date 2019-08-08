@@ -6,12 +6,11 @@
 <meta http-equiv="Content=Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
-<c:set var="id" value="${session.getAttribute('id')}"/>
+<c:set var="id" value="${id}"/>
 
 <title> 랜 덤 박 스 ! </title>
 </head>
 <body>
-
    <nav class="navbar navbar-default">
       <div class="navbar-hearder">
          <button type="button" class="navbar-toggle collapsed"
@@ -20,7 +19,6 @@
             </button>
             <a class="navbar-brand" href="main.jsp"> LUNCH BOX </a>
       </div>
-
          <!-- 여기는 if로 id 값이 없으면 발동하게 한다 -->
          <!-- soyoung 시작 -->
 <c:choose>
@@ -41,9 +39,7 @@
     </c:when>
 </c:choose>  
    </nav>
- 
 <!-- soyoung 끝 -->  
-
          <!-- soyoung 시작 -->
 <c:choose>
 	<c:when test="${empty id }">
@@ -65,7 +61,10 @@
       </div>
    </div>
        </c:when>
-</c:choose>  
+		<c:otherwise>
+			<c:redirect url = "/main.jsp" context = "/lunchbox/"/>
+		</c:otherwise>
+	</c:choose>  
 <!-- soyoung 끝 -->  
    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
    <script src="js/bootstrap.js"></script>

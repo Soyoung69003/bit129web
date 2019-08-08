@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import lunchbox.action.Action;
 import lunchbox.action.ActionForward;
+import lunchbox.action.RestoListAction;
 import lunchbox.board.action.BoardAddAction;
 import lunchbox.board.action.BoardDeleteAction;
 import lunchbox.board.action.BoardDetailAction;
@@ -65,7 +66,7 @@ public class BoardFrontController extends HttpServlet implements Servlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/BoardList.bo")) {
+		} else if (command.equals("/BoardListAction.bo")) {
 			action = new BoardListAction();
 			try {
 				forward = action.execute(request, response);
@@ -79,7 +80,15 @@ public class BoardFrontController extends HttpServlet implements Servlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/RestoListAction.bo")) {
+			action = new RestoListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+
 
 		if (forward.isRedirect()) {
 			response.sendRedirect(forward.getPath());

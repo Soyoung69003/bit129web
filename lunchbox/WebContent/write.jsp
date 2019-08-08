@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+		<c:set var="id" value="${id }"/>
 <html>
 <head>
 <meta http-equiv="Content=Type" content="text/html; charset=UTF-8">
@@ -12,13 +13,7 @@
 </head>
 <body>
 	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
-	<% // 여기서는 세션에 userid값이 존재하면 불러온다
-		String userID = null;
-		if(session.getAttribute("userID") != null){
-			userID = (String) session.getAttribute("userID");
-		}
 	
-	%>
 	
 	
 	<nav class="navbar navbar-default">
@@ -37,16 +32,8 @@
 					<li><a href="result.jsp"> Result </a></li>
 					<li class = "active"><a href="write.jsp"> Bus making </a></li>
 					
-				
-					
-					
 					
 			</ul>
-			
-			
-			
-			
-			
 			
 			<!-- 여기는 if로 id 값이 있으면 발동하게 한다 -->
 	
@@ -63,16 +50,11 @@
 			</ul>
 		</div>
 	</nav>
-	
-	
-	
-	
-	
 <div class="container">
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
          <div class="jumbotron" style="padding-top: 20px;">
-            <form method="post" action="joinAction.jsp">
+            <form method="post" action="./BoardListAction.bo">
                <h2 style="text-align: center;">Bus making</h2>
             
                <div class="form-group">
@@ -91,10 +73,7 @@
                   </textarea>
                </div>
                <input type="submit" class="btn btn-primary form-control" value="submit"  onclick="return confirm('부릉부릉?')" >
-              
             </form>
-      
-      
          </div>
       </div>
    </div>

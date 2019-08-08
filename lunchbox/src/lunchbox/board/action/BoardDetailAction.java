@@ -29,7 +29,7 @@ public class BoardDetailAction implements Action {
 		request.setAttribute("boardvo", boardvo);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./~~~.jsp");
+		forward.setPath("./~~~.jsp"); // 상세보기 보내기
 		return forward;
 	}
 

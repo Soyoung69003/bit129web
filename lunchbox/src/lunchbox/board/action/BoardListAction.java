@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import lunchbox.action.Action;
 import lunchbox.action.ActionForward;
 import lunchbox.model.board.BoardDAO;
+import lunchbox.model.board.BoardVO;
 
 public class BoardListAction implements Action {
 
@@ -16,7 +17,7 @@ public class BoardListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		BoardDAO boarddao = new BoardDAO();
-		List boardList = new ArrayList();
+		List<BoardVO> boardList = new ArrayList<BoardVO>();
 
 		int page = 1, limit = 10;
 
@@ -46,7 +47,7 @@ public class BoardListAction implements Action {
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./boardList.jsp");
+		forward.setPath("./lunchboxBoard.jsp");
 		return forward;
 
 	}
