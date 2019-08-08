@@ -11,16 +11,16 @@
     <servlet-name>BoardFrontController</servlet-name> 
     <servlet-class> lunchbox.controller.BoardFrontController</servlet-class> 
 </servlet> 
+<servlet-mapping> 
+    <servlet-name>BoardFrontController</servlet-name> 
+    <url-pattern>*.do</url-pattern> 
+</servlet-mapping> 
 
 <servlet> 
     <servlet-name>MemberFrontController</servlet-name> 
     <servlet-class> lunchbox.controller.MemberFrontController</servlet-class> 
 </servlet> 
 
-<servlet-mapping> 
-    <servlet-name>BoardFrontController</servlet-name> 
-    <url-pattern>*.bo</url-pattern> 
-</servlet-mapping> 
 
 <servlet-mapping> 
     <servlet-name>MemberFrontController </servlet-name> 

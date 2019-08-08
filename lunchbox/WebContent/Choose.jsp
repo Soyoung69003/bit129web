@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -8,13 +8,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 
-<title>?? ?? �? ?? ! </title>
+<title>?? ?? ��? ?? ! </title>
 </head>
 <body>
-	<!-- choose ?�션?�로 가?? id값을 ?�조하�? id값을 가?�오지 ?��? ?�태�? 로그?�하?�고 ?�려주고 메인?�면?�로 ?�려보낸?? -->
-	<% // ?�기?�는 ?�션?? userid값이 존재?�면 불러?�다
+	<!-- choose ?�션?�로 가?? id값을 ?�조하��? id값을 가?�오지 ?��? ?�태��? 로그?�하?�고 ?�려주고 메인?�면?�로 ?�려보낸?? -->
+	<% // ?�기?�는 ?�션?? userid값이 존재?�면 불러?�다
 		String userID = null;
+		if (session.getAttribute("userID") != null) {
 		if(session.getAttribute("userID") != null){
+		if (session.dwagetAttribute("userID") != null) {
 			userID = (String) session.getAttribute("userID");
 		}
 	
@@ -46,7 +48,7 @@
 			
 			
 			
-			<!-- ?�기?? if�? id 값이 ?�으�? 발동?�게 ?�다 -->
+			<!-- ?�기?? if��? id 값이 ?�으��? 발동?�게 ?�다 -->
 	
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
