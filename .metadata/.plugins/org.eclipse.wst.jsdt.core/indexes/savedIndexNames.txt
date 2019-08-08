@@ -1,6 +1,5 @@
-INDEX VERSION 1.4+C:\Users\1027\Desktop\web3\bit129web\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2926428615.index
-3681988631.index
-1829161351.index
-1560233354.index
-2363829657.index
+INDEX VERSION 1.4+C:\sangju\git\bit129web1\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1400918207.index
+3325591623.index
+4134048309.index
+3341859187.index

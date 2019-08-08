@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\Users\1027\Desktop\web3\bit129web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\1027\Desktop\web3\bit129web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\lunchbox_1.0" path="/lunchbox_1.0" reloadable="true" source="org.eclipse.jst.jee.server:lunchbox_1.0">
+      <Context docBase="C:\Users\1027\Desktop\web3\bit129web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\sangju\git\bit129web1\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Users\1027\Desktop\web3\bit129web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\lunchbox_1.0" path="/lunchbox_1.0" reloadable="true" source="org.eclipse.jst.jee.server:lunchbox_1.0">
 	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" name="jdbc/OracleDB" password="oracle" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="sangju"/>
 
 </Context></Host>

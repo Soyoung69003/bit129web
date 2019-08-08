@@ -2,9 +2,11 @@
 <section name="Workbench">
 	<item key="CommitDialog.showUntracked" value="true"/>
 	<list key="CommitDialog.authorValues">
+		<item value="sangju &lt;gustkdwn2@naver.com&gt;"/>
 		<item value="sijeune &lt;hermionemy@naver.com&gt;"/>
 	</list>
 	<list key="CommitDialog.committerValues">
+		<item value="sangju &lt;gustkdwn2@naver.com&gt;"/>
 		<item value="sijeune &lt;hermionemy@naver.com&gt;"/>
 	</list>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">

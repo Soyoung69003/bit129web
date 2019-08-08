@@ -5,4 +5,8 @@
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="lunchbox.board.action.BoardAddviewAction"/>
+<fullyQualifiedTypeName name="lunchbox.model.member.MemberDAO"/>
+<fullyQualifiedTypeName name="lunchbox.model.resto.RestoDAO"/>
+<fullyQualifiedTypeName name="lunchbox.model.resto.RestoVO"/>
 </qualifiedTypeNameHistroy>
