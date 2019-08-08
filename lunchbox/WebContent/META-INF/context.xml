@@ -9,8 +9,4 @@
    password="oracle" 
    />   
 </Context>
-   username="magic" 
-   password="oracle" 
-   maxActive="500"  
-   maxIdle="100"/>   
-</Context>
+

@@ -62,7 +62,9 @@
             
             
                <div class = "item active">
+               <a href="BoardAddviewAction.bo?num=${NUMBER0}">
                   <img src = "images/${NUMBER0}.jpg" alt="첫번째 식당입니다">
+                  </a>
                <div class="carousel-caption">
                   <h3>${TITLE0}</h3>
                   <p>${MENU0}
@@ -73,18 +75,22 @@
                
                
                <div class = "item">
+               <a href="BoardAddviewAction.bo?num=${NUMBER1}">
                   <img src = "images/${NUMBER1}.jpg" alt="두번째 식당입니다">
+                  </a>
                <div class="carousel-caption">
                   <h3>${TITLE1}</h3>
                     <p>${MENU1}
                   	<br>${CONTENT1}
                   </p>
                </div> 
-               </div>
+               </div> 
                
                
                <div class = "item">
-                  <img src = "images/${NUMBER2}.jpg" alt="두번째 식당입니다">
+               <a href="BoardAddviewAction.bo?num=${vo.NUMBER2}">
+                  <img  src = "images/${NUMBER2}.jpg" alt="셋번째 식당입니다">
+               </a>
                <div class="carousel-caption">
                   <h3>${TITLE2}</h3>
                     <p>${MENU2}
@@ -95,7 +101,9 @@
                
                
                <div class = "item">
-                  <img src = "images/${NUMBER3}.jpg" alt="두번째 식당입니다">
+               <a href="BoardAddviewAction.bo?num=${NUMBER3}">
+                  <img src = "images/${NUMBER3}.jpg" alt="네번째 식당입니다">
+                  </a>
                <div class="carousel-caption">
                   <h3>${TITLE3}</h3>
                     <p>${MENU3}
