@@ -1,15 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@ page import = "lunchbox.controller.*" %>
 <html>
 <head>
 <meta http-equiv="Content=Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
+<c:set var="id" value="${id}"/>
+
 <title> 랜 덤 박 스 ! </title>
 </head>
 <body>
+<!-- 로그인 상태면 메인으로 강제 이동 -->
+<c:if test="${not empty id }">
+	<c:redirect url = "/main.jsp" context = "/lunchbox/"/>
+</c:if>
+<!-- 비회원에게 보이는 상단메뉴-->
 	<nav class="navbar navbar-default">
 		<div class="navbar-hearder">
 			<button type="button" class="navbar-toggle collapsed"
@@ -18,8 +25,6 @@
 				</button>
 				<a class="navbar-brand" href="main.jsp"> LUNCH BOX </a>
 		</div>
-			
-			<!-- 여기는 if로 id 값이 없으면 발동하게 한다 -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -35,7 +40,7 @@
 			</div>
 	</nav>
 
-
+<!-- 회원가입 폼-->
 <div class="container">
 <div style=" margin: 100px 25px 15px 0px">
       <div class="col-lg-4"></div>

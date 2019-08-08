@@ -6,6 +6,7 @@
 <%@ page import="lunchbox.board.action.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="id" value="${id }" />
+<c:set var="userName" value="${userName }"/>
 <!DOCTYPE html>
 <html>
 <head>

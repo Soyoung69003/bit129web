@@ -1,5 +1,7 @@
 package lunchbox.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,13 +26,24 @@ public class MemberJoinAction implements Action{
 
         //회원가입 실패시 null반환 
         if(result==false){ 
-            System.out.println("회원가입 실패"); 
+            response.setContentType("text/html;charset=utf-8"); 
+            PrintWriter out = response.getWriter(); 
+            out.println("<script>"); 
+            out.println("alert('아이디 중복');"); 
+            out.println("location.href='./joinForm.jsp'"); 
+            out.println("</script>"); 
+            out.close(); 
             return null; 
         }     
         //회원가입 성공 
-        forward.setRedirect(true); 
-        System.out.println("회원가입 성공!");
-        forward.setPath("./MemberLogin.me");         
+        forward.setRedirect(false); 
+        response.setContentType("text/html;charset=utf-8"); 
+        PrintWriter out = response.getWriter(); 
+        out.println("<script>"); 
+        out.println("alert('회원가입 성공');"); 
+        out.println("location.href='./MemberLogin.me'"); 
+        out.println("</script>"); 
+        out.close();
         return forward; 
     } 
 }

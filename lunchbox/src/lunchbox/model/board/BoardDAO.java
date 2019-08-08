@@ -65,7 +65,7 @@ public class BoardDAO {
 
 	public List<BoardVO> getBoardList(int page, int limit) {
 		String SQL = "select board_num, board_title, board_id, board_content, board_present, "
-				+ "board_date, board_maxpresent from lunchbox_board where board_num >= ? and board_num <= ?"; // ?
+				+ "board_date, board_maxpresent from lunchbox_board where board_num >= ? and board_num <= ? order by board_num desc"; // ?
 		List<BoardVO> list = new ArrayList<BoardVO>();
 
 		int startrow = (page - 1) * 10 + 1; // 읽기 시작할 row 번호.
