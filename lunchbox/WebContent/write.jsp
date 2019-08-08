@@ -62,10 +62,10 @@
                   Name <input type="text" class="form-control"  name="userName" value="${ userName }" readonly>
                </div>
                <div class="form-group">
-                  Bus stop<input type="text" class="form-control" name="Busstop" value="${ restovo.RESTO_TITLE }" readonly>
+                  Bus stop<input type="text" class="form-control" name="RESTO_TITLE" value="${ restovo.RESTO_TITLE }" readonly>
                </div>
                <div class="form-group">
-                 Main menu<input type="text" class="form-control" name="Mainmenu"  value="${ restovo.RESTO_MENU }" readonly>
+                 Main menu<input type="text" class="form-control" name="RESTO_MENU"  value="${ restovo.RESTO_MENU }" readonly>
                </div>
                <div class="form-group">
                  Content<input type="text" class="form-control" name="RESTO_CONTENT"  value="${ restovo.RESTO_CONTENT }" readonly>
