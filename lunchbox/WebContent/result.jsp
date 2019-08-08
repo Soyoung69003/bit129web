@@ -28,9 +28,8 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp"> Main </a></li>
-				<li class="active"><a href="result.jsp"> Result </a></li>
+				<li class="active"><a href="RestoListAction.bo"> Result </a></li>
 				<li><a href="./BoardListAction.bo">list</a></li>
-				<li>${restolist }</li>
 			</ul>
 
 			<!-- 여기는 if로 id 값이 있으면 발동하게 한다 -->
