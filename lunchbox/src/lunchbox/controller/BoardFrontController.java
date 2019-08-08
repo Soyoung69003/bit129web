@@ -13,6 +13,7 @@ import lunchbox.action.Action;
 import lunchbox.action.ActionForward;
 import lunchbox.action.RestoListAction;
 import lunchbox.board.action.BoardAddAction;
+import lunchbox.board.action.BoardAddviewAction;
 import lunchbox.board.action.BoardDeleteAction;
 import lunchbox.board.action.BoardDetailAction;
 import lunchbox.board.action.BoardListAction;
@@ -38,10 +39,13 @@ public class BoardFrontController extends HttpServlet implements Servlet {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./board/board_delete.jsp");
-		} else if (command.equals("/BoardAdd.bo")) {
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./write.jsp");
+		} else if (command.equals("/BoardAddviewAction.bo")) {
+			action = new BoardAddviewAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else if (command.equals("/BoardModify.bo")) {
 			action = new BoardModifyView();
 			try {

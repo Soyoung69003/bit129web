@@ -50,6 +50,7 @@ public class MemberLoginAction implements Action {
          
         //로그인 성공
         session.setAttribute("id", member.getMEMBER_ID());
+        session.setAttribute("userName", member.getMEMBER_NAME());
         System.out.println("세션 바인딩 완료");
         forward.setRedirect(true);//접속 reset
 //        forward.setPath("./BoardList.do");//원래 일루 가야 되는데

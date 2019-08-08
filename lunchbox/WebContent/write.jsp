@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="lunchbox.board.action.*" %>
+<%@ page import="lunchbox.model.resto.*" %>
+<%@ page import="lunchbox.model.member.*" %>
+<%@ page import="lunchbox.model.board.*" %>
 		<c:set var="id" value="${id }"/>
 <html>
 <head>
@@ -58,13 +62,19 @@
                <h2 style="text-align: center;">Bus making</h2>
             
                <div class="form-group">
-                  Name <input type="text" class="form-control"  name="userID"  readonly>
+                  Name <input type="text" class="form-control"  name="userName" value="${ userName }" readonly>
                </div>
                <div class="form-group">
-                  Bus stop<input type="text" class="form-control" name="Busstop"  readonly>
+                  Bus stop<input type="text" class="form-control" name="Busstop" value="${ restovo.RESTO_TITLE }" readonly>
                </div>
                <div class="form-group">
-                 Main menu<input type="text" class="form-control" name="Mainmenu"readonly>
+                 Main menu<input type="text" class="form-control" name="Mainmenu"  value="${ restovo.RESTO_MENU }" readonly>
+               </div>
+               <div class="form-group">
+                 Content<input type="text" class="form-control" name="RESTO_CONTENT"  value="${ restovo.RESTO_CONTENT }" readonly>
+               </div>
+               <div class="form-group">
+                 price<input type="text" class="form-control" name="RESTO_CONTENT"  value="${ restovo.RESTO_PRICE }" readonly>
                </div>
                <div class="form-group">
                  Member number<input type="text" class="form-control" name="BOARD_MAXPRESENT">

@@ -170,5 +170,29 @@ public class MemberDAO {
         } 
          
         return false; 
-    } 
+    }
+
+	public String getUserName(String sessionid) {
+		String sql="SELECT member_name FROM lunchbox_member WHERE MEMBER_ID=?"; 
+        
+        try{ 
+            pstmt=con.prepareStatement(sql); 
+            pstmt.setString(1, sessionid); 
+            rs=pstmt.executeQuery(); 
+            String userName = "";
+            
+            if(rs.next())
+            	userName = rs.getString(1);
+            else
+            	userName = "이름없음";
+             
+            return userName; 
+        }catch(Exception e){ 
+            System.out.println("getDeatilMember 에러: " + e);             
+        }finally{ 
+            if(rs!=null) try{rs.close();}catch(SQLException e){} 
+            if(pstmt!=null) try{pstmt.close();}catch(SQLException e){} 
+        } 
+		return null;
+	} 
 }

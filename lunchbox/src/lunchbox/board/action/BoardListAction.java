@@ -26,7 +26,7 @@ public class BoardListAction implements Action {
 		}
 
 		int listcount = boarddao.getListCount();
-		boardList = boarddao.getBoardList(page, limit);
+		boardList = boarddao.getBoardList(page, listcount);
 
 		// 총 페이지 수
 		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95를 더해서 올림 처리

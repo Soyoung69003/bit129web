@@ -130,4 +130,43 @@ public class RestoDAO {
 		return -1;
 	}
 
+	public RestoVO getMenu(int restoNum) {
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement("select RESTO_NUMBER, RESTO_TITLE, RESTO_MENU, RESTO_PRICE, RESTO_CONTENT from "
+					+ "lunchbox_resto where resto_number = ?");
+			pstmt.setInt(1, restoNum);
+			RestoVO restovo = new RestoVO();
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				restovo.setRESTO_NUMBER(rs.getInt("RESTO_NUMBER"));
+				restovo.setRESTO_TITLE(rs.getString("RESTO_TITLE"));
+				restovo.setRESTO_MENU(rs.getString("RESTO_MENU"));
+				restovo.setRESTO_PRICE(rs.getInt("RESTO_PRICE"));
+				restovo.setRESTO_CONTENT(rs.getString("RESTO_CONTENT"));
+			}
+			return restovo;
+		} catch (Exception ex) {
+			System.out.println("getDetail 에러 : " + ex);
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return null;
+	}
+
 }
