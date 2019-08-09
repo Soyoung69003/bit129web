@@ -327,4 +327,48 @@ public class BoardDAO {
 		return false;
 	}
 
+	public ArrayList<BoardVO> search(String boardTitle) {
+		String SQL = "select * from lunchbox_board where board_title LIKE ?"; // ?
+		ArrayList<BoardVO> boardlist = new ArrayList<BoardVO>();
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(SQL);
+			pstmt.setString(1, "%"+boardTitle+"%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardVO board = new BoardVO();
+				board.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+				board.setBOARD_TITLE(rs.getString("BOARD_TITLE"));
+				board.setBOARD_ID(rs.getString("BOARD_ID"));
+				board.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
+				board.setBOARD_PRESENT(rs.getInt("BOARD_PRESENT"));
+				board.setBOARD_MAXPRESENT(rs.getInt("BOARD_MAXPRESENT"));
+				board.setBOARD_DATE(rs.getDate("BOARD_DATE"));
+				
+				boardlist.add(board);
+			}
+			return boardlist;
+		} catch (Exception ex) {
+			System.out.println("search 에러 : " + ex);
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return null;
+	}
+
 }

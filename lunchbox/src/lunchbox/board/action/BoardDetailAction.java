@@ -25,9 +25,6 @@ public class BoardDetailAction implements Action {
 		BoardVO boardvo = boarddao.getDetail(num);
 		imageNum = restodao.getImage(boardvo.getBOARD_TITLE());
 		
-		System.out.println(boardvo.getBOARD_TITLE());
-		System.out.println(imageNum);
-		
 		request.setAttribute("boardvo", boardvo);
 		request.setAttribute("imageNum", imageNum);
 		ActionForward forward = new ActionForward();

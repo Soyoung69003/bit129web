@@ -32,9 +32,6 @@ public class BoardAddviewAction implements Action {
 			e.printStackTrace();
 		}
 		
-		System.out.println(userName);
-		System.out.println(restovo.getRESTO_MENU());
-		
 		request.setAttribute("userName", userName);
 		request.setAttribute("restovo", restovo);
 		

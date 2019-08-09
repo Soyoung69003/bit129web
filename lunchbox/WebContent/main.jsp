@@ -45,10 +45,10 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">회원메뉴 <span class="caret"></span></a>
+							aria-expanded="false">Member <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="./MemberLogoutAction.me">로그아웃</a></li>
-								<li><a href="./BoardListAction.bo">게시판</a></li>
+								<li><a href="./MemberLogoutAction.me">Sign out</a></li>
+								<li><a href="./BoardListAction.bo">BUS</a></li>
 								<c:choose>
 									<c:when test='${id!=null && id.equals("admin") }'>
 										<li><a href="./MemberListAction.me">회원목록조회</a></li>
@@ -81,6 +81,9 @@
                      </div>
 				</div>
 			</div>
+			<marquee scrollamount="40" direction="right">
+		<img alt="밥먹자" src="images/밥주세1.png">
+		</marquee>
 		</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>

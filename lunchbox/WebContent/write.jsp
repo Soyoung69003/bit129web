@@ -64,25 +64,38 @@
                <div class="form-group">
                   Bus stop<input type="text" class="form-control" name="RESTO_TITLE" value="${ restovo.RESTO_TITLE }" readonly>
                </div>
-               <div class="form-group">
-                 Main menu<input type="text" class="form-control" name="RESTO_MENU"  value="${ restovo.RESTO_MENU }" readonly>
-               </div>
-               <div class="form-group">
-                 Content<input type="text" class="form-control" name="RESTO_CONTENT"  value="${ restovo.RESTO_CONTENT }" readonly>
-               </div>
-               <div class="form-group">
-                 price<input type="text" class="form-control" name="RESTO_CONTENT"  value="${ restovo.RESTO_PRICE }" readonly>
-               </div>
-               <div class="form-group">
-                 Member number<input type="text" class="form-control" name="BOARD_MAXPRESENT">
-               </div>
-               <div class="form-group" style="text-align: center;">
-               </div>
+               
+               
+					<div class="form-group"> Max Member
+                              <p><select name="BOARD_MAXPRESENT" class="form-control" style="width: 100px; height:30px; margin:10px 0px 0px 70px;" >
+                                 <option value="1">1</option>
+                                 <option value="2">2</option>
+                                 <option value="3">3</option>
+                                 <option value="4">4</option>
+                                 <option value="5">5</option>
+                                 <option value="6">6</option>
+                                 <option value="7">7</option>
+                                 <option value="8">8</option>
+                                 <option value="9">9</option>
+                                 <option value="10">10</option>
+                              </select></p> 
+                
+                        </div>
+   
+             
                <div class="form-group">
                   <textarea name="BOARD_CONTENT" cols="30" rows="8">
                   </textarea>
                </div>
+                
+               
+               
+               
+               
                <input type="submit" class="btn btn-primary form-control" value="submit"  onclick="return confirm('부릉부릉?')" >
+                <input type="hidden" class="form-control" name="RESTO_MENU"  value="${ restovo.RESTO_MENU }" readonly>
+                 <input type="hidden" class="form-control" name="RESTO_CONTENT"  value="${ restovo.RESTO_CONTENT }" readonly>
+                 <input type="hidden" class="form-control" name="RESTO_PRICE"  value="${ restovo.RESTO_PRICE }" readonly>
             </form>
          </div>
       </div>

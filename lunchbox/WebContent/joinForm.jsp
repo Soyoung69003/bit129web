@@ -23,7 +23,7 @@
 				data-toggle="collapse" data-taget="#bs-example-navbar-collapse-1"
 				aria-expanded="false">
 				</button>
-				<a class="navbar-brand" href="main.jsp"> LUNCH BOX </a>
+				<a class="navbar-brand" href="main.jsp"> LUNCHBOX </a>
 		</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">

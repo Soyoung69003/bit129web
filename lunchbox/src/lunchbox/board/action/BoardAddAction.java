@@ -19,7 +19,6 @@ public class BoardAddAction implements Action {
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		String sessionid = (String)session.getAttribute("id"); // 세션이름
-		System.out.println(request.getParameter("num"));
 		int restoNum = Integer.parseInt(request.getParameter("num")); // 음식 num get으로 받기
 	
 		

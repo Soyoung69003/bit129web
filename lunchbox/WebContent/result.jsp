@@ -13,7 +13,6 @@
 <title>랜 덤 박 스 !</title>
 </head>
 <body>
-	<!-- choose 액션으로 가서 id값을 대조하고 id값을 가져오지 않은 상태면 로그인하라고 알려주고 메인화면으로 돌려보낸다 -->
 	<c:if test="${empty id }">
 		<c:redirect url="/loginForm.jsp" context="/lunchbox/" />
 	</c:if>
@@ -23,15 +22,14 @@
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-taget="#bs-example-navbar-collapse-1"
 				aria-expanded="false"></button>
-			<a class="navbar-brand" href="main.jsp"> LUNCH BOX </a>
+			<a class="navbar-brand" href="main.jsp"> LUNCHBOX </a>
 		</div>
 
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="main.jsp"> Main </a></li>
-				<li class="active"><a href="result.jsp"> Result </a></li>
-				<li><a href="./BoardListAction.bo">list</a></li>
+				<li class="active"><a href="RestoListAction.bo"> Launch </a></li>
+				<li><a href="./BoardListAction.bo">Bus</a></li>
 			</ul>
 
 			<!-- 여기는 if로 id 값이 있으면 발동하게 한다 -->
@@ -39,9 +37,9 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">Disconnect<span class="caret"></span></a>
+					aria-expanded="false">Member<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="./MemberLogoutAction.me">로그아웃</a>
+						<li><a href="./MemberLogoutAction.me">Sign out</a>
 					</ul></li>
 			</ul>
 		</div>

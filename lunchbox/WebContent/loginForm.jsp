@@ -17,10 +17,8 @@
             data-toggle="collapse" data-taget="#bs-example-navbar-collapse-1"
             aria-expanded="false">
             </button>
-            <a class="navbar-brand" href="main.jsp"> LUNCH BOX </a>
+            <a class="navbar-brand" href="main.jsp"> LUNCHBOX </a>
       </div>
-         <!-- 여기는 if로 id 값이 없으면 발동하게 한다 -->
-         <!-- soyoung 시작 -->
 <c:choose>
 	<c:when test="${empty id }">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -39,8 +37,6 @@
     </c:when>
 </c:choose>  
    </nav>
-<!-- soyoung 끝 -->  
-         <!-- soyoung 시작 -->
 <c:choose>
 	<c:when test="${empty id }">
    <div class="container">

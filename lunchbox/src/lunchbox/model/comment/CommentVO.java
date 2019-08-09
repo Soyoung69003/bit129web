@@ -2,7 +2,7 @@ package lunchbox.model.comment;
 
 public class CommentVO {
 	private int COMMENT_NUMBER;
-	private String COMMENT_BOARD_NUMBER;
+	private int COMMENT_BOARD_NUMBER;
 	private String COMMENT_NAME;
 	private String COMMENT_CONTENT;
 	
@@ -12,10 +12,10 @@ public class CommentVO {
 	public void setCOMMENT_NUMBER(int cOMMENT_NUMBER) {
 		COMMENT_NUMBER = cOMMENT_NUMBER;
 	}
-	public String getCOMMENT_BOARD_NUMBER() {
+	public int getCOMMENT_BOARD_NUMBER() {
 		return COMMENT_BOARD_NUMBER;
 	}
-	public void setCOMMENT_BOARD_NUMBER(String cOMMENT_BOARD_NUMBER) {
+	public void setCOMMENT_BOARD_NUMBER(int cOMMENT_BOARD_NUMBER) {
 		COMMENT_BOARD_NUMBER = cOMMENT_BOARD_NUMBER;
 	}
 	public String getCOMMENT_NAME() {

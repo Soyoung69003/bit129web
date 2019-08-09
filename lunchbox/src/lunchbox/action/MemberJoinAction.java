@@ -29,21 +29,16 @@ public class MemberJoinAction implements Action{
             response.setContentType("text/html;charset=utf-8"); 
             PrintWriter out = response.getWriter(); 
             out.println("<script>"); 
-            out.println("alert('아이디 중복');"); 
+            out.println("alert('회원가입 실패');"); 
             out.println("location.href='./joinForm.jsp'"); 
             out.println("</script>"); 
             out.close(); 
             return null; 
         }     
         //회원가입 성공 
-        forward.setRedirect(false); 
-        response.setContentType("text/html;charset=utf-8"); 
-        PrintWriter out = response.getWriter(); 
-        out.println("<script>"); 
-        out.println("alert('회원가입 성공');"); 
-        out.println("location.href='./MemberLogin.me'"); 
-        out.println("</script>"); 
-        out.close();
+        forward.setRedirect(true); 
+        System.out.println("회원가입 성공!");
+        forward.setPath("./MemberLogin.me");         
         return forward; 
     } 
 }
